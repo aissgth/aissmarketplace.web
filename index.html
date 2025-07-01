@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aiss Hosting - Beranda</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔊 Musik autoplay dari URL (tetap muter saat pindah halaman) -->
+<audio autoplay loop hidden>
+  <source src="https://files.catbox.moe/kv2prt.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🌐 Halaman konten dimuat di iframe -->
+<iframe id="konten" src="beranda.html"></iframe>
+
+<!-- Navigasi antar halaman -->
+<script>
+  window.addEventListener("message", function(e) {
+    if (e.data?.page) {
+      document.getElementById("konten").src = e.data.page;
+    }
+  });
+</script>
+
+</body>
+</html>
