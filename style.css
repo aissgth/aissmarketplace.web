@@ -19,13 +19,8 @@ body {
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
 }
 
-h2 {
+h2, .highlight, .info-option h3 {
   text-align: center;
-  margin-bottom: 15px;
-  color: #00ff88;
-}
-
-.highlight {
   color: #00ff88;
 }
 
@@ -44,19 +39,18 @@ h2 {
 
 .info-option {
   background: #1a1a1a;
-  border: 1px solid #00ff88;
+  border: 2px solid #00ff88;
   padding: 18px;
   border-radius: 10px;
   text-align: center;
   text-decoration: none;
   color: #00ff88;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+  animation: border-glow 3s infinite alternate;
 }
 
 .info-option:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
   background-color: #101010;
 }
 
@@ -65,11 +59,6 @@ h2 {
   height: 60px;
   margin-bottom: 12px;
   filter: brightness(1.2) saturate(2);
-}
-
-.info-option h3 {
-  margin: 10px 0 6px;
-  color: #00ff88;
 }
 
 footer {
@@ -88,13 +77,14 @@ a.info-option {
 
 .panel-card {
   background-color: #111;
-  border: 1px solid #00ff88;
+  border: 2px solid #00ff88;
   border-radius: 12px;
   padding: 20px;
   margin: 20px auto;
   text-align: center;
   color: #aaffcc;
   max-width: 90%;
+  animation: border-glow 3s infinite alternate;
 }
 
 .panel-card h3 {
@@ -112,8 +102,78 @@ a.info-option {
   border-radius: 10px;
   font-weight: bold;
   text-decoration: none;
+  border: 2px solid #00ff88;
+  animation: border-glow 3s infinite alternate;
 }
 
 .btn-wa:hover {
   background-color: #00dd77;
+}
+
+/* 🌈 ANIMASI BORDER DAN SHADOW SAJA */
+@keyframes border-glow {
+  0% {
+    border-color: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+  }
+  25% {
+    border-color: #ff0040;
+    box-shadow: 0 0 8px #ff0040;
+  }
+  50% {
+    border-color: #0000aa;
+    box-shadow: 0 0 8px #0000aa;
+  }
+  75% {
+    border-color: #00ccff;
+    box-shadow: 0 0 8px #00ccff;
+  }
+  100% {
+    border-color: #aa00ff;
+    box-shadow: 0 0 8px #aa00ff;
+  }
+}
+
+/* Neon border effect background pinggir */
+@keyframes edgeGlow {
+  0% {
+    box-shadow: inset 0 0 15px #00ff88;
+  }
+  25% {
+    box-shadow: inset 0 0 15px #ff0040;
+  }
+  50% {
+    box-shadow: inset 0 0 15px #0000aa;
+  }
+  75% {
+    box-shadow: inset 0 0 15px #00ccff;
+  }
+  100% {
+    box-shadow: inset 0 0 15px #aa00ff;
+  }
+}
+
+/* Elemen pembungkus halaman yang punya efek glowing pinggir */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 8px;
+  background-color: transparent;
+  animation: edgeGlow 5s infinite alternate;
+  z-index: 1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 8px;
+  background-color: transparent;
+  animation: edgeGlow 5s infinite alternate;
+  z-index: 1;
 }
