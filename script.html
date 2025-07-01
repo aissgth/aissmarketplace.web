@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layanan Hosting - Aiss Hosting</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .dropdown {
+      position: relative;
+      width: 100%;
+    }.dropdown-content {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.dropdown.active .dropdown-content {
+  display: flex;
+}
+
+.dropdown-button {
+  background-color: #1a1a1a;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-button:hover {
+  background-color: #101010;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Detail Layanan Hosting</h2>
+    <p>Berikut adalah kategori layanan dan harganya:</p><!-- Script Premium -->
+<div class="dropdown">
+  <div class="dropdown-button" onclick="toggleDropdown(this)">Script Premium</div>
+  <div class="dropdown-content">
+    <a href="script-whatsapp.html" class="info-option">Script WhatsApp - Rp30.000</a>
+    <a href="script-store.html" class="info-option">Script Store - Rp25.000</a>
+    <a href="script-web.html" class="info-option">Script Web - Rp20.000</a>
+  </div>
+</div>
+
+  </div>  <script>
+    function toggleDropdown(button) {
+      const parent = button.parentElement;
+      parent.classList.toggle('active');
+    }
+  </script></body>
