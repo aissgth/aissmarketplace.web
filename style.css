@@ -85,3 +85,35 @@ footer {
 a.info-option {
   display: block;
 }
+
+.panel-card {
+  background-color: #111;
+  border: 1px solid #00ff88;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  color: #aaffcc;
+  max-width: 90%;
+}
+
+.panel-card h3 {
+  color: #00ff88;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.btn-wa {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #00ff88;
+  color: #000;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-wa:hover {
+  background-color: #00dd77;
+}

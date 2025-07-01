@@ -1,69 +1,141 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layanan Hosting - Aiss Hosting</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download File - Aiss Hosting</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    .dropdown {
-      position: relative;
-      width: 100%;
-    }.dropdown-content {
-  display: none;
-  flex-direction: column;
-  margin-top: 10px;
-  gap: 10px;
-  animation: slideDown 0.3s ease forwards;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Arial', sans-serif;
+      color: #00ff88;
+    }
 
-.dropdown.active .dropdown-content {
-  display: flex;
-}
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-.dropdown-button {
-  background-color: #1a1a1a;
-  color: #00ff88;
-  border: 1px solid #00ff88;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  font-weight: bold;
-}
+    .info-card {
+      background-color: #111;
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 0 10px #00ff88;
+    }
 
-.dropdown-button:hover {
-  background-color: #101010;
-}
+    h2 {
+      text-align: center;
+      color: #00ff88;
+    }
 
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .info-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
 
+    .info-option {
+      background-color: #1a1a1a;
+      border: 1px solid #00ff88;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .info-option:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .info-option h3 {
+      color: #00ff88;
+      margin-bottom: 10px;
+    }
+
+    .info-option p {
+      color: #bbb;
+    }
+
+    .info-option a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #00ff88;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .info-option a:hover {
+      background-color: #00cc6e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .back-link a {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #00ff88;
+      border: 1px solid #00ff88;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link a:hover {
+      background-color: #222;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Detail Layanan Hosting</h2>
-    <p>Berikut adalah kategori layanan dan harganya:</p><!-- Script Premium -->
-<div class="dropdown">
-  <div class="dropdown-button" onclick="toggleDropdown(this)">Script Premium</div>
-  <div class="dropdown-content">
-    <a href="script-whatsapp.html" class="info-option">Script WhatsApp - Rp30.000</a>
-    <a href="script-store.html" class="info-option">Script Store - Rp25.000</a>
-    <a href="script-web.html" class="info-option">Script Web - Rp20.000</a>
+    <div class="info-card">
+      <h2>Pilih File untuk Diunduh</h2>
+
+      <!-- script.html -->
+<div class="info-options">
+  <div class="info-option">
+    <h3>Kumpulan Scrip Bug Free</h3>
+    <p>Gratisan Mulu Babi Buy Lah</p>
+    <a href="scriptbug.html">Lihat Detail</a>
+  </div>
+
+  <div class="info-option">
+    <h3>Kumpulan Script Pushkontak</h3>
+    <p>Kerja Makanya Biar Kagak Mulung Terus Sc Free Babi</p>
+    <a href="scriptpushkontak.html">Lihat Detail</a>
+  </div>
+
+  <div class="info-option">
+    <h3>Kumpulan Script Md</h3>
+    <p>Yahh Ketauan Pemburu Script Free</p>
+    <a href="script.html">Lihat Detail</a>
   </div>
 </div>
 
-  </div>  <script>
-    function toggleDropdown(button) {
-      const parent = button.parentElement;
-      parent.classList.toggle('active');
-    }
-  </script></body>
+      <div class="back-link">
+        <a href="layanan-hosting.html">← Kembali</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Aiss Hosting</footer>
+</body>
+</html>
