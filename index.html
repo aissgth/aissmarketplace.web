@@ -2,74 +2,41 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Aiss Hosting - Beranda</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    #starter {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      color: #00ff88;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 99;
-      font-size: 20px;
-      flex-direction: column;
-    }
-    #starter button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #00ff88;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aiss Hosting - Layanan Kami</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <div class="info-card">
+      <h2>Selamat Datang di <span class="highlight">Aiss Hosting</span></h2>
+      <p class="intro">Kami menyediakan berbagai layanan yang anda butuhkan</p>
 
-<!-- 🎵 Audio tag -->
-<audio id="musik" loop>
-  <source src="https://files.catbox.moe/or5w0o.mp3" type="audio/mpeg">
-</audio>
+      <div class="info-options">
+        <a href="menumain.html" class="info-option glow-animated">
+          <img src="https://files.catbox.moe/3npik2.jpg" alt="Layanan Hosting" />
+          <h3>Layanan Hosting</h3>
+          <p>Panel, Sewa Bot, VPS, Script, dan lainnya.</p>
+        </a>
+        <a href="menuinfo.html" class="info-option glow-animated">
+          <img src="https://cdn-icons-png.flaticon.com/512/2950/2950662.png" alt="Group Komunitas" />
+          <h3>Info Owner</h3>
+          <p>Informasi Semua Sosmed Owner.</p>
+        </a>
+        <a href="menupanduan.html" class="info-option glow-animated">
+          <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Panduan" />
+          <h3>Panduan Pembelian</h3>
+          <p>Panduan Pembelian Yang Anda Inginkan.</p>
+        </a>
+        <a href="menutentang.html" class="info-option glow-animated">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Tentang Kami" />
+          <h3>Tentang Kami</h3>
+          <p>Kebutuhan digital terpercaya sejak 2025.</p>
+        </a>
+      </div>
+    </div>
+  </div>
 
-<!-- 🔁 Starter screen -->
-<div id="starter">
-  <div>Selamat datang di Aiss Hosting</div>
-  <button onclick="mulai()">Masuk & Mulai Musik</button>
-</div>
-
-<!-- 📄 Iframe halaman konten -->
-<iframe id="konten" src="beranda.html" style="display:none;"></iframe>
-
-<script>
-  function mulai() {
-    const audio = document.getElementById("musik")
-    audio.play()
-    document.getElementById("starter").style.display = "none"
-    document.getElementById("konten").style.display = "block"
-  }
-
-  // Untuk navigasi antar halaman via iframe
-  window.addEventListener("message", function(e) {
-    if (e.data?.page) {
-      document.getElementById("konten").src = e.data.page;
-    }
-  });
-</script>
-
+  <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
 </body>
 </html>

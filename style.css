@@ -48,20 +48,24 @@ h2 {
 /* Opsi menu */
 .info-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+  justify-content: center;
+  align-items: start;
+  place-items: center; /* Ini bikin semua kotak selalu di tengah */
 }
 
 .info-option {
-  background: #1a1a1a;
-  padding: 18px;
+  background-color: #1a1a1a;
+  border: 1px solid #00ff88;
   border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  text-decoration: none;
-  color: #00ff88;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
-  border: 2px solid #00ff88;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: neon-border 2s infinite alternate;
+  width: 100%; /* penting biar grid urus lebar */
+  max-width: 320px; /* batas maksimum kotak */
+  box-sizing: border-box;
 }
 
 .info-option:hover {
