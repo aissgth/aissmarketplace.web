@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Dam Daman</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-bottom: 20px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      gap: 0;
+      border: 2px solid #fff;
+    }
+
+    .cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dark {
+      background-color: #222;
+    }
+
+    .light {
+      background-color: #555;
+    }
+
+    .piece {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .selected {
+      outline: 3px solid yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Game Dam Daman</h1>
+  <div id="board"></div>
+
+  <script>
+    const board = document.getElementById("board");
+    let selectedPiece = null;
+    let currentPlayer = "red";
+
+    function createBoard() {
+      board.innerHTML = "";
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+          const cell = document.createElement("div");
+          cell.className = "cell " + ((row + col) % 2 === 0 ? "light" : "dark");
+          cell.dataset.row = row;
+          cell.dataset.col = col;
+
+          // Tambah bidak
+          if (row < 3 && (row + col) % 2 === 1) {
+            const piece = createPiece("red");
+            cell.appendChild(piece);
+          } else if (row > 4 && (row + col) % 2 === 1) {
+            const piece = createPiece("blue");
+            cell.appendChild(piece);
+          }
+
+          cell.addEventListener("click", () => handleCellClick(cell));
+          board.appendChild(cell);
+        }
+      }
+    }
+
+    function createPiece(color) {
+      const piece = document.createElement("div");
+      piece.className = "piece " + color;
+      piece.dataset.color = color;
+      return piece;
+    }
+
+    function handleCellClick(cell) {
+      const piece = cell.querySelector(".piece");
+
+      if (selectedPiece) {
+        // Pindah ke cell kosong
+        if (!piece && cell.classList.contains("dark")) {
+          const from = selectedPiece.parentElement;
+          const to = cell;
+          const fromRow = parseInt(from.dataset.row);
+          const fromCol = parseInt(from.dataset.col);
+          const toRow = parseInt(to.dataset.row);
+          const toCol = parseInt(to.dataset.col);
+
+          const diffRow = toRow - fromRow;
+          const diffCol = toCol - fromCol;
+
+          if (
+            Math.abs(diffRow) === 1 && Math.abs(diffCol) === 1 ||
+            Math.abs(diffRow) === 2 && Math.abs(diffCol) === 2
+          ) {
+            // Cek jika melompati
+            if (Math.abs(diffRow) === 2) {
+              const middleRow = (fromRow + toRow) / 2;
+              const middleCol = (fromCol + toCol) / 2;
+              const middleCell = getCell(middleRow, middleCol);
+              const middlePiece = middleCell.querySelector(".piece");
+
+              if (
+                middlePiece &&
+                middlePiece.dataset.color !== currentPlayer
+              ) {
+                middleCell.innerHTML = ""; // makan bidak
+              } else {
+                return; // gak valid
+              }
+            }
+
+            to.appendChild(selectedPiece);
+            selectedPiece.classList.remove("selected");
+            selectedPiece = null;
+            currentPlayer = currentPlayer === "red" ? "blue" : "red";
+          }
+        } else {
+          // klik tempat lain
+          selectedPiece.classList.remove("selected");
+          selectedPiece = null;
+        }
+      } else if (piece && piece.dataset.color === currentPlayer) {
+        selectedPiece = piece;
+        piece.classList.add("selected");
+      }
+    }
+
+    function getCell(row, col) {
+      return board.querySelector(`.cell[data-row='${row}'][data-col='${col}']`);
+    }
+
+    createBoard();
+  </script>
+
+</body>
+</html>

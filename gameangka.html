@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neon Sliding Puzzle</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      margin-bottom: 10px;
+    }
+
+    #levelDisplay {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: #f0f;
+      text-shadow: 0 0 8px #f0f;
+    }
+
+    .board {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 30px;
+      justify-content: center;
+      align-content: center;
+      width: 100%;
+      max-width: 90vw;
+    }
+
+    .tile {
+      background: #0ff;
+      color: #000;
+      font-size: 1em;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      transition: transform 0.1s;
+    }
+
+    .tile:hover {
+      transform: scale(1.05);
+    }
+
+    .empty {
+      background: #000;
+      box-shadow: none;
+      cursor: default;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      margin: 10px;
+      cursor: pointer;
+      background: #f0f;
+      color: #fff;
+      box-shadow: 0 0 8px #f0f, 0 0 15px #f0f;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #f0f;
+      box-shadow: 0 0 10px #fff, 0 0 20px #f0f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sliding Puzzle</h1>
+  <div id="levelDisplay">Level: 1 | Board: 3 x 3</div>
+  <div class="board" id="board"></div>
+  <div>
+    <button onclick="restart()">Restart</button>
+    <button onclick="nextLevel()">Next Level</button>
+  </div>
+<div style="text-align: center; margin-top: 30px;">
+        <a href="menugame.html" class="btn-wa">← Kembali</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    let level = 1;
+    let size = 3;
+    let tiles = [];
+    const board = document.getElementById('board');
+
+    function getBoardSize(level) {
+      return 3 + Math.floor((level - 1) / 5); // naik setiap 5 level
+    }
+
+    function createTiles() {
+      size = getBoardSize(level);
+      const count = size * size;
+      tiles = [...Array(count - 1).keys()].map(x => x + 1);
+      tiles.push(null);
+    }
+
+    function renderTiles() {
+      const tileSizePercent = Math.max(100 / size - 2, 8); // max size, min 8%
+      board.style.gridTemplateColumns = `repeat(${size}, ${tileSizePercent}%)`;
+      board.innerHTML = '';
+      tiles.forEach((tile, index) => {
+        const tileDiv = document.createElement('div');
+        tileDiv.className = 'tile' + (tile === null ? ' empty' : '');
+        tileDiv.textContent = tile ?? '';
+        tileDiv.style.fontSize = `${Math.max(18, 40 - size * 2)}px`; // auto kecilin font
+        tileDiv.onclick = () => moveTile(index);
+        board.appendChild(tileDiv);
+      });
+      document.getElementById('levelDisplay').textContent = `Level: ${level} | Board: ${size} x ${size}`;
+    }
+
+    function moveTile(index) {
+      const emptyIndex = tiles.indexOf(null);
+      if (checkAdjacent(index, emptyIndex)) {
+        [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+        renderTiles();
+        checkWin();
+      }
+    }
+
+    function checkAdjacent(i1, i2) {
+      const r1 = Math.floor(i1 / size), c1 = i1 % size;
+      const r2 = Math.floor(i2 / size), c2 = i2 % size;
+      return (Math.abs(r1 - r2) + Math.abs(c1 - c2)) === 1;
+    }
+
+    function shuffle(times = 60) {
+      const moves = [-1, 1, -size, size];
+      let emptyIndex = tiles.indexOf(null);
+      for (let i = 0; i < times; i++) {
+        const possible = moves
+          .map(m => emptyIndex + m)
+          .filter(i => i >= 0 && i < tiles.length && checkAdjacent(i, emptyIndex));
+        const target = possible[Math.floor(Math.random() * possible.length)];
+        [tiles[emptyIndex], tiles[target]] = [tiles[target], tiles[emptyIndex]];
+        emptyIndex = target;
+      }
+    }
+
+    function isSolved() {
+      const correct = [...Array(size * size - 1).keys()].map(x => x + 1).concat(null);
+      return tiles.every((val, idx) => val === correct[idx]);
+    }
+
+    function checkWin() {
+      if (isSolved()) {
+        setTimeout(() => {
+          alert(`🎉 Level ${level} selesai!`);
+        }, 100);
+      }
+    }
+
+    function nextLevel() {
+      if (!isSolved()) {
+        alert("Selesaikan level ini dulu!");
+        return;
+      }
+      if (level >= 100) {
+        alert("🎊 Semua level selesai!");
+        return;
+      }
+      level++;
+      startLevel();
+    }
+
+    function restart() {
+      startLevel();
+    }
+
+    function startLevel() {
+      createTiles();
+      shuffle(30 + level * 3); // makin tinggi makin susah
+      renderTiles();
+    }
+
+    startLevel();
+  </script>
+
+</body>
+</html>

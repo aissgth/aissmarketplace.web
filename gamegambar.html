@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Puzzle Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #000;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-bottom: 5px;
+    }
+
+    #info {
+      font-size: 1.2em;
+      color: #f0f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #f0f;
+    }
+
+    #game-board {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-content: center;
+      width: 100%;
+      max-width: 400px;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+
+    .card {
+      background: #111;
+      border-radius: 10px;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 0 8px #0ff, 0 0 20px #0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .card.revealed img {
+      display: block;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #f0f;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #f0f;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #f0f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Match the Images</h1>
+  <div id="info">Level: 1 | Time: 60s</div>
+  <div id="game-board"></div>
+  <button onclick="restartGame()">Restart Game</button>
+
+  <script>
+    const baseImages = [
+  "https://picsum.photos/id/200/100",
+  "https://picsum.photos/id/201/100",
+  "https://picsum.photos/id/202/100",
+  "https://picsum.photos/id/203/100",
+  "https://picsum.photos/id/204/100",
+  "https://picsum.photos/id/205/100",
+  "https://picsum.photos/id/206/100",
+  "https://picsum.photos/id/207/100",
+  "https://picsum.photos/id/208/100",
+  "https://picsum.photos/id/209/100",
+  "https://picsum.photos/id/210/100",
+  "https://picsum.photos/id/211/100",
+  "https://picsum.photos/id/212/100",
+  "https://picsum.photos/id/213/100",
+  "https://picsum.photos/id/214/100",
+  "https://picsum.photos/id/215/100",
+  "https://picsum.photos/id/216/100",
+  "https://picsum.photos/id/217/100",
+  "https://picsum.photos/id/218/100",
+  "https://picsum.photos/id/219/100",
+  "https://picsum.photos/id/220/100",
+  "https://picsum.photos/id/221/100",
+  "https://picsum.photos/id/222/100",
+  "https://picsum.photos/id/223/100",
+  "https://picsum.photos/id/224/100",
+  "https://picsum.photos/id/225/100",
+  "https://picsum.photos/id/226/100",
+  "https://picsum.photos/id/227/100",
+  "https://picsum.photos/id/228/100",
+  "https://picsum.photos/id/229/100",
+  "https://picsum.photos/id/230/100",
+  "https://picsum.photos/id/231/100",
+  "https://picsum.photos/id/232/100",
+  "https://picsum.photos/id/233/100",
+  "https://picsum.photos/id/234/100",
+  "https://picsum.photos/id/235/100",
+  "https://picsum.photos/id/236/100",
+  "https://picsum.photos/id/237/100",
+  "https://picsum.photos/id/238/100",
+  "https://picsum.photos/id/239/100",
+  "https://picsum.photos/id/240/100",
+  "https://picsum.photos/id/241/100",
+  "https://picsum.photos/id/242/100",
+  "https://picsum.photos/id/243/100",
+  "https://picsum.photos/id/244/100",
+  "https://picsum.photos/id/245/100",
+  "https://picsum.photos/id/246/100",
+  "https://picsum.photos/id/247/100",
+  "https://picsum.photos/id/248/100",
+  "https://picsum.photos/id/249/100"
+];
+
+    let level = 1;
+    let time = 60;
+    let timerInterval;
+    let selected = [];
+    let matched = 0;
+    const board = document.getElementById('game-board');
+    const info = document.getElementById('info');
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function startGame() {
+      clearInterval(timerInterval);
+      time = Math.max(20, 70 - level * 5); // waktu makin pendek
+      info.textContent = `Level: ${level} | Time: ${time}s`;
+
+      const numPairs = Math.min(level + 2, baseImages.length);
+      const selectedImages = baseImages.slice(0, numPairs);
+      const pairs = [...selectedImages, ...selectedImages];
+      shuffle(pairs);
+
+      board.innerHTML = '';
+      selected = [];
+      matched = 0;
+
+      board.style.gridTemplateColumns = `repeat(auto-fit, minmax(70px, 1fr))`;
+
+      pairs.forEach((src, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.index = index;
+        card.dataset.image = src;
+
+        const img = document.createElement('img');
+        img.src = src;
+        card.appendChild(img);
+
+        card.addEventListener('click', () => revealCard(card));
+        board.appendChild(card);
+      });
+
+      timerInterval = setInterval(() => {
+        time--;
+        info.textContent = `Level: ${level} | Time: ${time}s`;
+        if (time <= 0) {
+          clearInterval(timerInterval);
+          setTimeout(() => {
+            alert("⏰ Waktu habis! Ulangi level.");
+            startGame();
+          }, 200);
+        }
+      }, 1000);
+    }
+
+    function revealCard(card) {
+      if (card.classList.contains('revealed') || selected.length === 2) return;
+
+      card.classList.add('revealed');
+      selected.push(card);
+
+      if (selected.length === 2) {
+        const [first, second] = selected;
+        if (first.dataset.image === second.dataset.image) {
+          matched += 2;
+          selected = [];
+          if (matched === board.children.length) {
+            clearInterval(timerInterval);
+            setTimeout(() => {
+              alert(`🎉 Level ${level} selesai!`);
+              level++;
+              startGame();
+            }, 400);
+          }
+        } else {
+          setTimeout(() => {
+            first.classList.remove('revealed');
+            second.classList.remove('revealed');
+            selected = [];
+          }, 700);
+        }
+      }
+    }
+
+    function restartGame() {
+      level = 1;
+      startGame();
+    }
+
+    startGame();
+  </script>
+
+</body>
+</html>
