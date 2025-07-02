@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Payment</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0e0e0e;
+      color: #00ff88;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .payment-card {
+      background: #121212;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ff88;
+    }
+
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .payment-option {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      border: 2px solid #00ff88;
+      box-shadow: 0 0 15px #9400ff80;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .payment-option:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px #00ff8890;
+    }
+
+    .payment-option img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background: white;
+      padding: 6px;
+    }
+
+    .payment-option button {
+      padding: 10px 18px;
+      background-color: #00ff88;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .payment-option button:hover {
+      background-color: #00dd77;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #00ff88;
+      background-color: #121212;
+      border-top: 1px solid #00ff88;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 480px) {
+      .payment-option img {
+        width: 60px;
+      }
+      .payment-option button {
+        width: 100%;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="payment-card">
+      <h2>Halaman Pembayaran</h2>
+      <div class="payment-options">
+
+        <div class="payment-option" id="qris-payment">
+          <img src="https://files.catbox.moe/3is3vh.jpg" alt="QRIS Logo" />
+          <button onclick="startQRISPayment()">Bayar dengan QRIS</button>
+        </div>
+
+        <div class="payment-option" id="dana-payment">
+          <img src="https://files.catbox.moe/6jtvll.png" alt="DANA Logo" />
+          <button onclick="startDanaPayment()">Bayar dengan DANA</button>
+        </div>
+
+        <div class="payment-option" id="gopay-payment">
+          <img src="https://files.catbox.moe/7nz86g.jpg" alt="GOPAY Logo" />
+          <button onclick="startGopayPayment()">Bayar dengan GOPAY</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    </div>
+      <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
+
+  <!-- Tambahkan ini -->
+  <script>
+    function startQRISPayment() {
+      alert("Redirecting to QRIS payment...");
+      window.location.href = "payqris.html";
+    }
+
+    function startDanaPayment() {
+      alert("Redirecting to DANA payment...");
+      window.location.href = "paydana.html";
+    }
+
+    function startGopayPayment() {
+      alert("Redirecting to GOPAY payment...");
+      window.location.href = "paygopay.html";
+    }
+  </script>
+    </body>
+      </html>

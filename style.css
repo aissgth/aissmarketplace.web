@@ -169,3 +169,12 @@ footer {
     font-size: 14px;
   }
 }
+
+/* === Tambahan untuk mengubah warna link jadi putih === */
+a,
+a:visited,
+a:hover,
+a:active {
+  color: white;
+  text-decoration: none; /* hilangkan garis bawah jika mau */
+}
