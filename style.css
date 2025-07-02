@@ -1,0 +1,167 @@
+/* Reset dan dasar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e0e0e;
+  color: #00ff88;
+  line-height: 1.6;
+}
+
+/* Container utama */
+.container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Card utama */
+.info-card {
+  background: #121212;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+/* Judul */
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #00ff88;
+}
+
+.highlight {
+  color: #00ff88;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  color: #aaffcc;
+}
+
+/* Opsi menu */
+.info-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.info-option {
+  background: #1a1a1a;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #00ff88;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+  border: 2px solid #00ff88;
+}
+
+.info-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+  background-color: #101010;
+}
+
+.info-option img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+  filter: brightness(1.2) saturate(2);
+}
+
+.info-option h3 {
+  margin: 10px 0 6px;
+  color: #00ff88;
+}
+
+/* Efek glow animasi */
+@keyframes neon-border {
+  0%   { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
+  25%  { box-shadow: 0 0 10px #ff0055; border-color: #ff0055; }
+  50%  { box-shadow: 0 0 10px #00ccff; border-color: #00ccff; }
+  75%  { box-shadow: 0 0 10px #cc00ff; border-color: #cc00ff; }
+  100% { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
+}
+
+.glow-animated {
+  animation: neon-border 2.5s infinite alternate;
+  border-radius: 12px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+  color: #00ff88;
+  background-color: #121212;
+  margin-top: 40px;
+  border-top: 1px solid #00ff88;
+}
+
+/* Panel info tambahan */
+.panel-card {
+  background-color: #111;
+  border: 2px solid #00ff88;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  color: #aaffcc;
+  max-width: 90%;
+}
+
+.panel-card h3 {
+  color: #00ff88;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Tombol WhatsApp */
+.btn-wa {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #00ff88;
+  color: #000;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-wa:hover {
+  background-color: #00dd77;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .info-option {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .info-option img {
+    width: 50px;
+    height: 50px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .intro {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aiss Hosting - Beranda</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #starter {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: #00ff88;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99;
+      font-size: 20px;
+      flex-direction: column;
+    }
+    #starter button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00ff88;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🎵 Audio tag -->
+<audio id="musik" loop>
+  <source src="https://files.catbox.moe/or5w0o.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🔁 Starter screen -->
+<div id="starter">
+  <div>Selamat datang di Aiss Hosting</div>
+  <button onclick="mulai()">Masuk & Mulai Musik</button>
+</div>
+
+<!-- 📄 Iframe halaman konten -->
+<iframe id="konten" src="beranda.html" style="display:none;"></iframe>
+
+<script>
+  function mulai() {
+    const audio = document.getElementById("musik")
+    audio.play()
+    document.getElementById("starter").style.display = "none"
+    document.getElementById("konten").style.display = "block"
+  }
+
+  // Untuk navigasi antar halaman via iframe
+  window.addEventListener("message", function(e) {
+    if (e.data?.page) {
+      document.getElementById("konten").src = e.data.page;
+    }
+  });
+</script>
+
+</body>
+</html>
