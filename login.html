@@ -81,7 +81,7 @@
   </div>
 
   <script>
-    let mode = 'login'; // atau 'register'
+    let mode = 'login';
 
     function toggleMode() {
       mode = (mode === 'login') ? 'register' : 'login';
@@ -104,7 +104,9 @@
         return;
       }
 
-      const baseURL = 'https://37e56838-4f2d-4de3-8d85-6d5a1c53fcbd-00-1vzznqvccpq4o.pike.replit.dev';
+      const baseURL = 'https://37e56838-4f2d-4de3-8d85-6d5a1c53fcbd-00-1vzznqvccpq4o.pike.replit.dev/'; // Ganti ini ke domain backend kamu (Railway, Replit, dsb)
+      const url = (mode === 'login') ? `${baseURL}/api/login` : `${baseURL}/api/daftar`;
+
       const payload = (mode === 'login') ?
         { username, password } :
         { username, password, phone };
@@ -117,7 +119,7 @@
         .then(data => {
           if (data.success) {
             localStorage.setItem('currentUser', username);
-            window.location.href = 'menugame.html';
+            window.location.href = 'menugame.html'; // Redirect setelah berhasil
           } else {
             document.getElementById('error-msg').innerText = data.error || 'Terjadi kesalahan!';
           }
