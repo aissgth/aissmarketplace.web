@@ -81,52 +81,52 @@
   </div>
 
   <script>
-  let mode = 'login';
+    let mode = 'login';
 
-  function toggleMode() {
-    mode = (mode === 'login') ? 'register' : 'login';
-    document.getElementById('form-title').innerText = (mode === 'login') ? 'Login' : 'Daftar';
-    document.getElementById('submit-btn').innerText = (mode === 'login') ? 'Login' : 'Daftar';
-    document.getElementById('phone').style.display = (mode === 'register') ? 'block' : 'none';
-    document.querySelector('.switch-mode').innerHTML = (mode === 'login') ?
-      `Belum punya akun? <u>Daftar di sini</u>` :
-      `Sudah punya akun? <u>Login di sini</u>`;
-  }
-
-  function handleSubmit() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-
-    if (!username || !password || (mode === 'register' && !phone)) {
-      document.getElementById('error-msg').innerText = 'Semua input harus diisi!';
-      return;
+    function toggleMode() {
+      mode = (mode === 'login') ? 'register' : 'login';
+      document.getElementById('form-title').innerText = (mode === 'login') ? 'Login' : 'Daftar';
+      document.getElementById('submit-btn').innerText = (mode === 'login') ? 'Login' : 'Daftar';
+      document.getElementById('phone').style.display = (mode === 'register') ? 'block' : 'none';
+      document.querySelector('.switch-mode').innerHTML = (mode === 'login') ?
+        `Belum punya akun? <u>Daftar di sini</u>` :
+        `Sudah punya akun? <u>Login di sini</u>`;
     }
 
-    let users = JSON.parse(localStorage.getItem('users') || '{}');
+    function handleSubmit() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const phone = document.getElementById('phone').value.trim();
 
-    if (mode === 'register') {
-      if (users[username]) {
-        document.getElementById('error-msg').innerText = 'Username sudah terdaftar!';
+      if (!username || !password || (mode === 'register' && !phone)) {
+        document.getElementById('error-msg').innerText = 'Semua input harus diisi!';
         return;
       }
-      users[username] = { password, phone };
-      localStorage.setItem('users', JSON.stringify(users));
-      localStorage.setItem('currentUser', username);
-      window.location.href = 'menugame.html';
-    } else {
-      if (!users[username]) {
-        document.getElementById('error-msg').innerText = 'Username tidak ditemukan!';
-        return;
+
+      let users = JSON.parse(localStorage.getItem('users') || '{}');
+
+      if (mode === 'register') {
+        if (users[username]) {
+          document.getElementById('error-msg').innerText = 'Username sudah terdaftar!';
+          return;
+        }
+        users[username] = { password, phone };
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', username);
+        window.location.href = 'menugame.html';
+      } else {
+        if (!users[username]) {
+          document.getElementById('error-msg').innerText = 'Username tidak ditemukan!';
+          return;
+        }
+        if (users[username].password !== password) {
+          document.getElementById('error-msg').innerText = 'Password salah!';
+          return;
+        }
+        localStorage.setItem('currentUser', username);
+        window.location.href = 'menugame.html';
       }
-      if (users[username].password !== password) {
-        document.getElementById('error-msg').innerText = 'Password salah!';
-        return;
-      }
-      localStorage.setItem('currentUser', username);
-      window.location.href = 'menugame.html';
     }
-  }
-</script>
+  </script>
 </body>
 </html>
