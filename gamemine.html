@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minesweeper Neon</title>
+  <style>
+    body {
+      background: #000;
+      color: #0ff;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      text-shadow: 0 0 10px #0ff;
+    }
+    #scoreboard {
+      margin-top: 10px;
+      color: #0f0;
+      font-weight: bold;
+      text-shadow: 0 0 5px #0f0;
+    }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(10, 30px);
+      grid-template-rows: repeat(10, 30px);
+      gap: 2px;
+      margin-top: 20px;
+    }
+    .cell {
+      width: 30px;
+      height: 30px;
+      background: #111;
+      border: 1px solid #0ff;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 5px #0ff;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cell:hover {
+      transform: scale(1.1);
+    }
+    .cell.revealed {
+      background: #222;
+      cursor: default;
+    }
+    .cell.mine {
+      background: red;
+      animation: explode 0.4s ease-in-out;
+    }
+    @keyframes explode {
+      0% { background: #fff; transform: scale(1.2); }
+      100% { background: red; transform: scale(1); }
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background: #0ff;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Minesweeper</h1>
+  <div id="scoreboard">⏱️ Time: <span id="timer">0</span>s | 💣 Bombs: 15</div>
+  <div id="board"></div>
+  <button onclick="startGame()">Reset Game</button>  <script>
+    const board = document.getElementById("board");
+    const timerDisplay = document.getElementById("timer");
+    const size = 10;
+    let mineCount = 15;
+    let cells = [];
+    let timer;
+    let time = 0;
+    let gameOver = false;
+
+    function startGame() {
+      board.innerHTML = "";
+      clearInterval(timer);
+      time = 0;
+      timerDisplay.textContent = time;
+      gameOver = false;
+      timer = setInterval(() => {
+        time++;
+        timerDisplay.textContent = time;
+      }, 1000);
+
+      cells = [];
+      board.style.gridTemplateColumns = `repeat(${size}, 30px)`;
+      board.style.gridTemplateRows = `repeat(${size}, 30px)`;
+
+      for (let i = 0; i < size * size; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.dataset.index = i;
+        board.appendChild(cell);
+        cells.push({
+          element: cell,
+          mine: false,
+          revealed: false,
+          flagged: false,
+          adjacentMines: 0
+        });
+      }
+
+      // Place mines
+      let placed = 0;
+      while (placed < mineCount) {
+        const index = Math.floor(Math.random() * cells.length);
+        if (!cells[index].mine) {
+          cells[index].mine = true;
+          placed++;
+        }
+      }
+
+      // Count adjacent mines
+      for (let i = 0; i < cells.length; i++) {
+        if (cells[i].mine) continue;
+        let count = 0;
+        getNeighbors(i).forEach(n => {
+          if (cells[n].mine) count++;
+        });
+        cells[i].adjacentMines = count;
+      }
+
+      // Add event listeners
+      cells.forEach((cell, i) => {
+        cell.element.addEventListener("click", () => reveal(i));
+        cell.element.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+          flag(i);
+        });
+      });
+    }
+
+    function getNeighbors(index) {
+      const x = index % size;
+      const y = Math.floor(index / size);
+      const neighbors = [];
+
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (dx === 0 && dy === 0) continue;
+          const nx = x + dx;
+          const ny = y + dy;
+          if (nx >= 0 && nx < size && ny >= 0 && ny < size) {
+            neighbors.push(ny * size + nx);
+          }
+        }
+      }
+
+      return neighbors;
+    }
+
+    function reveal(index) {
+      const cell = cells[index];
+      if (cell.revealed || cell.flagged || gameOver) return;
+      cell.revealed = true;
+      cell.element.classList.add("revealed");
+
+      if (cell.mine) {
+        cell.element.classList.add("mine");
+        cell.element.textContent = "💣";
+        endGame(false);
+        return;
+      }
+
+      if (cell.adjacentMines > 0) {
+        cell.element.textContent = cell.adjacentMines;
+      } else {
+        getNeighbors(index).forEach(n => reveal(n));
+      }
+
+      checkWin();
+    }
+
+    function flag(index) {
+      const cell = cells[index];
+      if (cell.revealed || gameOver) return;
+      cell.flagged = !cell.flagged;
+      cell.element.textContent = cell.flagged ? "🚩" : "";
+    }
+
+    function endGame(won) {
+      gameOver = true;
+      clearInterval(timer);
+      if (!won) {
+        cells.forEach(c => {
+          if (c.mine && !c.revealed) {
+            c.element.textContent = "💣";
+            c.element.classList.add("mine");
+          }
+        });
+        setTimeout(() => alert("💥 Game Over!"), 100);
+      } else {
+        setTimeout(() => alert("🎉 You Win in " + time + " seconds!"), 100);
+      }
+    }
+
+    function checkWin() {
+      const allClear = cells.every(c => c.revealed || c.mine);
+      if (allClear) endGame(true);
+    }
+
+    startGame();
+  </script></body>
+</html>

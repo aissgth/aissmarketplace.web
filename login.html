@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Daftar - Aiss Game</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #00ff88;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .auth-box {
+      background-color: #121212;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      background-color: #1f1f1f;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00ff88;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .switch-mode {
+      margin-top: 20px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .error-msg {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <h2 id="form-title">Login</h2>
+    <div class="error-msg" id="error-msg"></div>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="phone" placeholder="No HP" style="display: none;">
+
+    <button id="submit-btn" onclick="handleSubmit()">Login</button>
+    <div class="switch-mode" onclick="toggleMode()">
+      Belum punya akun? <u>Daftar di sini</u>
+    </div>
+  </div>
+
+  <script>
+    let mode = 'login'; // atau 'register'
+
+    function toggleMode() {
+      mode = (mode === 'login') ? 'register' : 'login';
+
+      document.getElementById('form-title').innerText = (mode === 'login') ? 'Login' : 'Daftar';
+      document.getElementById('submit-btn').innerText = (mode === 'login') ? 'Login' : 'Daftar';
+      document.getElementById('phone').style.display = (mode === 'register') ? 'block' : 'none';
+      document.querySelector('.switch-mode').innerHTML = (mode === 'login') ?
+        `Belum punya akun? <u>Daftar di sini</u>` :
+        `Sudah punya akun? <u>Login di sini</u>`;
+    }
+
+    function handleSubmit() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const phone = document.getElementById('phone').value;
+
+      if (!username || !password || (mode === 'register' && !phone)) {
+        document.getElementById('error-msg').innerText = 'Semua input harus diisi!';
+        return;
+      }
+
+      const url = (mode === 'login') ? '/api/login' : '/api/daftar';
+      const payload = (mode === 'login') ?
+        { username, password } :
+        { username, password, phone };
+
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem('currentUser', username);
+            window.location.href = 'menugame.html';
+          } else {
+            document.getElementById('error-msg').innerText = data.error || 'Terjadi kesalahan!';
+          }
+        }).catch(err => {
+          document.getElementById('error-msg').innerText = 'Server tidak merespon!';
+        });
+    }
+  </script>
+</body>
+</html>

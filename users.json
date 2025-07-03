@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hiburan  - Aiss Hosting</title>
+  <title>Kumpulan Bug - Aiss Hosting</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -111,46 +111,33 @@
 <body>
   <div class="container">
     <div class="info-card">
-      <h2>Selamat Di Game Ini</h2>
+      <h2>Pilih File untuk Diunduh</h2>
 
       <div class="info-options">
         <div class="info-option">
-          <h3>Game Susun Angka</h3>
+          <h3>Harga Jasa Bug</h3>
           <p>By Aiss Hosting</p>
-          <a href="gameangka.html">Mulai Game</a>
+          <a href="hargajasbug.html">Lihat Detail</a>
         </div>
 
         <div class="info-option">
-          <h3>Game Cocokkan Gambar</h3>
+          <h3>Harga Murid Bug</h3>
           <p>By Aiss Hosting</p>
-          <a href="gamegambar.html">Mulai Game</a>
+          <a href="hargamurbug.html">Lihat Detail</a>
         </div>
-        
+
         <div class="info-option">
-          <h3>Game Dam Vs Ai</h3>
+          <h3>Harga Admin Bug</h3>
           <p>By Aiss Hosting</p>
-          <a href="gamedam.html">Mulai Game</a>
-        </div>
-        
-        <div class="info-option">
-          <h3>Tebak Bom</h3>
-          <p>By Aiss Hosting</p>
-          <a href="gamemine.html">Mulai Game</a>
+          <a href="hargaadmbug.html">Lihat Detail</a>
         </div>
       </div>
 
       <div style="text-align: center; margin-top: 30px;">
-        <a href="login.html" class="btn-wa">← Kembali</a>
+        <a href="menumain.html" class="btn-wa">← Kembali</a>
       </div>
     </div>
   </div>
     <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
       </body>
-    <script>
-  const user = localStorage.getItem('aissUser');
-  if (!user) {
-    alert('Silakan login dulu!');
-    window.location.href = 'login.html';
-  }
-      </script>
         </html>

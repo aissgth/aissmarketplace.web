@@ -1,155 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Game Dam Daman</title>
+  <meta charset="UTF-8">
+  <title>Dam Daman - Dengan Bot</title>
   <style>
     body {
       background: #000;
-      color: white;
+      color: #fff;
       font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      text-align: center;
       padding: 20px;
     }
-
     h1 {
       color: #0ff;
       text-shadow: 0 0 10px #0ff;
-      margin-bottom: 20px;
     }
-
+    #score {
+      margin: 10px 0;
+      font-size: 1.2em;
+      color: #f0f;
+      text-shadow: 0 0 5px #f0f;
+    }
     #board {
       display: grid;
       grid-template-columns: repeat(8, 60px);
       grid-template-rows: repeat(8, 60px);
       gap: 0;
       border: 2px solid #fff;
+      margin: auto;
     }
-
     .cell {
       width: 60px;
       height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
-
     .dark {
-      background-color: #222;
+      background-color: #111;
     }
-
     .light {
-      background-color: #555;
+      background-color: #333;
     }
-
     .piece {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       box-shadow: 0 0 10px #fff;
     }
-
     .red {
       background-color: red;
     }
-
     .blue {
       background-color: blue;
     }
-
     .selected {
       outline: 3px solid yellow;
+    }
+    .king::after {
+      content: 'K';
+      color: gold;
+      font-weight: bold;
+      font-size: 1.2em;
+      position: absolute;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #f0f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #f0f;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <h1>Game Dam Daman</h1>
+  <h1>Dam Daman vs Bot</h1>
+  <div id="score">Merah: 0 | Biru (Bot): 0</div>
   <div id="board"></div>
-
-  <script>
+  <button onclick="resetGame()">Reset Game</button>  <script>
     const board = document.getElementById("board");
-    let selectedPiece = null;
+    const scoreDisplay = document.getElementById("score");
     let currentPlayer = "red";
+    let selectedPiece = null;
+    let redScore = 0, blueScore = 0;
 
-    function createBoard() {
+    function createPiece(color, isKing = false) {
+      const piece = document.createElement("div");
+      piece.className = `piece ${color}`;
+      piece.dataset.color = color;
+      if (isKing) piece.classList.add("king");
+      return piece;
+    }
+
+    function resetGame() {
       board.innerHTML = "";
+      selectedPiece = null;
+      currentPlayer = "red";
+      redScore = 0;
+      blueScore = 0;
+      updateScore();
       for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
           const cell = document.createElement("div");
-          cell.className = "cell " + ((row + col) % 2 === 0 ? "light" : "dark");
+          cell.className = `cell ${(row + col) % 2 === 0 ? "light" : "dark"}`;
           cell.dataset.row = row;
           cell.dataset.col = col;
-
-          // Tambah bidak
           if (row < 3 && (row + col) % 2 === 1) {
-            const piece = createPiece("red");
-            cell.appendChild(piece);
+            cell.appendChild(createPiece("red"));
           } else if (row > 4 && (row + col) % 2 === 1) {
-            const piece = createPiece("blue");
-            cell.appendChild(piece);
+            cell.appendChild(createPiece("blue"));
           }
-
-          cell.addEventListener("click", () => handleCellClick(cell));
+          cell.addEventListener("click", () => handleClick(cell));
           board.appendChild(cell);
         }
       }
     }
 
-    function createPiece(color) {
-      const piece = document.createElement("div");
-      piece.className = "piece " + color;
-      piece.dataset.color = color;
-      return piece;
+    function updateScore() {
+      scoreDisplay.textContent = `Merah: ${redScore} | Biru (Bot): ${blueScore}`;
     }
 
-    function handleCellClick(cell) {
+    function handleClick(cell) {
+      if (currentPlayer !== "red") return;
       const piece = cell.querySelector(".piece");
-
       if (selectedPiece) {
-        // Pindah ke cell kosong
-        if (!piece && cell.classList.contains("dark")) {
-          const from = selectedPiece.parentElement;
-          const to = cell;
-          const fromRow = parseInt(from.dataset.row);
-          const fromCol = parseInt(from.dataset.col);
-          const toRow = parseInt(to.dataset.row);
-          const toCol = parseInt(to.dataset.col);
-
-          const diffRow = toRow - fromRow;
-          const diffCol = toCol - fromCol;
-
-          if (
-            Math.abs(diffRow) === 1 && Math.abs(diffCol) === 1 ||
-            Math.abs(diffRow) === 2 && Math.abs(diffCol) === 2
-          ) {
-            // Cek jika melompati
-            if (Math.abs(diffRow) === 2) {
-              const middleRow = (fromRow + toRow) / 2;
-              const middleCol = (fromCol + toCol) / 2;
-              const middleCell = getCell(middleRow, middleCol);
-              const middlePiece = middleCell.querySelector(".piece");
-
-              if (
-                middlePiece &&
-                middlePiece.dataset.color !== currentPlayer
-              ) {
-                middleCell.innerHTML = ""; // makan bidak
-              } else {
-                return; // gak valid
-              }
-            }
-
+        const from = selectedPiece.parentElement;
+        const to = cell;
+        if (!to.querySelector(".piece") && to.classList.contains("dark")) {
+          const canMove = tryMove(selectedPiece, from, to);
+          if (canMove) {
             to.appendChild(selectedPiece);
+            promoteIfNeeded(selectedPiece, parseInt(to.dataset.row));
             selectedPiece.classList.remove("selected");
             selectedPiece = null;
-            currentPlayer = currentPlayer === "red" ? "blue" : "red";
+            setTimeout(() => {
+              if (!checkMultiCapture(to)) {
+                currentPlayer = "blue";
+                setTimeout(botMove, 300);
+              }
+            }, 200);
           }
         } else {
-          // klik tempat lain
           selectedPiece.classList.remove("selected");
           selectedPiece = null;
         }
@@ -159,12 +153,103 @@
       }
     }
 
+    function tryMove(piece, from, to) {
+      const rowFrom = parseInt(from.dataset.row);
+      const colFrom = parseInt(from.dataset.col);
+      const rowTo = parseInt(to.dataset.row);
+      const colTo = parseInt(to.dataset.col);
+      const dRow = rowTo - rowFrom;
+      const dCol = colTo - colFrom;
+      const isKing = piece.classList.contains("king");
+
+      const dir = piece.dataset.color === "red" ? 1 : -1;
+      if (Math.abs(dRow) === 1 && Math.abs(dCol) === 1) {
+        if (isKing || dRow === dir) return true;
+      } else if (Math.abs(dRow) === 2 && Math.abs(dCol) === 2) {
+        const midRow = (rowFrom + rowTo) / 2;
+        const midCol = (colFrom + colTo) / 2;
+        const midCell = getCell(midRow, midCol);
+        const midPiece = midCell.querySelector(".piece");
+        if (midPiece && midPiece.dataset.color !== piece.dataset.color) {
+          midCell.innerHTML = "";
+          if (piece.dataset.color === "red") redScore++;
+          else blueScore++;
+          updateScore();
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function promoteIfNeeded(piece, row) {
+      if ((piece.dataset.color === "red" && row === 7) ||
+          (piece.dataset.color === "blue" && row === 0)) {
+        piece.classList.add("king");
+      }
+    }
+
     function getCell(row, col) {
       return board.querySelector(`.cell[data-row='${row}'][data-col='${col}']`);
     }
 
-    createBoard();
-  </script>
+    function checkMultiCapture(cell) {
+      const row = parseInt(cell.dataset.row);
+      const col = parseInt(cell.dataset.col);
+      const piece = cell.querySelector(".piece");
+      if (!piece) return false;
+      const dirs = [[-2, -2], [-2, 2], [2, -2], [2, 2]];
 
-</body>
+      for (let [dr, dc] of dirs) {
+        const r = row + dr;
+        const c = col + dc;
+        const midR = row + dr / 2;
+        const midC = col + dc / 2;
+        const target = getCell(r, c);
+        const middle = getCell(midR, midC);
+        if (!target || !middle || target.querySelector(".piece")) continue;
+        const midPiece = middle.querySelector(".piece");
+        if (midPiece && midPiece.dataset.color !== piece.dataset.color) {
+          selectedPiece = piece;
+          piece.classList.add("selected");
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function botMove() {
+      const moves = [];
+      const pieces = board.querySelectorAll(".piece.blue");
+      pieces.forEach(piece => {
+        const from = piece.parentElement;
+        const row = parseInt(from.dataset.row);
+        const col = parseInt(from.dataset.col);
+        const dirs = [[-1, -1], [-1, 1], [-2, -2], [-2, 2]];
+        if (piece.classList.contains("king")) {
+          dirs.push([1, -1], [1, 1], [2, -2], [2, 2]);
+        }
+        dirs.forEach(([dr, dc]) => {
+          const to = getCell(row + dr, col + dc);
+          if (!to || to.querySelector(".piece")) return;
+          const tempFrom = getCell(row, col);
+          const canMove = tryMove(piece, tempFrom, to);
+          if (canMove) moves.push({ piece, from: tempFrom, to });
+        });
+      });
+      if (moves.length > 0) {
+        const bestMove = moves.find(m => Math.abs(parseInt(m.from.dataset.row) - parseInt(m.to.dataset.row)) === 2) || moves[0];
+        bestMove.to.appendChild(bestMove.piece);
+        promoteIfNeeded(bestMove.piece, parseInt(bestMove.to.dataset.row));
+        currentPlayer = "red";
+      }
+    }
+
+    resetGame();
+    </script>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="menugame.html" class="btn-wa">← Kembali</a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
