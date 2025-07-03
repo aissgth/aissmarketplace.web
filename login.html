@@ -104,7 +104,8 @@
         return;
       }
 
-      const url = (mode === 'login') ? '/api/login' : '/api/daftar';
+      const baseURL = 'https://aissmarketplace-web.vercel.app'; // Ganti sesuai domain kamu
+      const url = (mode === 'login') ? `${baseURL}/api/login` : `${baseURL}/api/daftar`;
       const payload = (mode === 'login') ?
         { username, password } :
         { username, password, phone };
