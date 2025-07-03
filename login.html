@@ -1,130 +1,130 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login / Daftar - Aiss Game</title>
+  <title>Login / Daftar - Aiss Hosting</title>
   <style>
     body {
-      background-color: #0e0e0e;
-      color: #00ff88;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
     }
-
-    .auth-box {
-      background-color: #121212;
+    .form-container {
+      background-color: #111;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ff00;
+      width: 90%;
       max-width: 400px;
-      width: 100%;
       text-align: center;
     }
-
     h2 {
+      color: #00ff00;
       margin-bottom: 20px;
     }
-
     input {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
-      border-radius: 8px;
       border: none;
-      background-color: #1f1f1f;
+      border-radius: 8px;
+      background-color: #222;
       color: #fff;
     }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #00ff88;
+    .btn {
+      background: #00ff88;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 10px;
       color: #000;
       font-weight: bold;
-      border: none;
       border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff00ff;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00ffaa;
+    }
+    .toggle-link {
       margin-top: 15px;
-      cursor: pointer;
-    }
-
-    .switch-mode {
-      margin-top: 20px;
+      display: block;
       color: #aaa;
+    }
+    .toggle-link a {
+      color: #00ffcc;
+      text-decoration: underline;
       cursor: pointer;
     }
-
-    .error-msg {
-      color: red;
-      margin-bottom: 10px;
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #00ff88;
     }
   </style>
 </head>
 <body>
-  <div class="auth-box">
-    <h2 id="form-title">Login</h2>
-    <div class="error-msg" id="error-msg"></div>
-
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <input type="text" id="phone" placeholder="No HP" style="display: none;">
-
-    <button id="submit-btn" onclick="handleSubmit()">Login</button>
-    <div class="switch-mode" onclick="toggleMode()">
-      Belum punya akun? <u>Daftar di sini</u>
+  <div class="form-container">
+    <h2 id="formTitle">Login</h2>
+    <input type="text" id="username" placeholder="Username / Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <input type="text" id="phone" placeholder="Nomor HP" style="display: none;" />
+    <button class="btn" onclick="handleSubmit()" id="submitBtn">Login</button>
+    <div class="toggle-link" id="toggleForm">
+      Belum punya akun? <a onclick="toggleForm()">Daftar di sini</a>
     </div>
   </div>
 
-  <script>
-    let mode = 'login';
+  <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
 
-    function toggleMode() {
-      mode = (mode === 'login') ? 'register' : 'login';
-      document.getElementById('form-title').innerText = (mode === 'login') ? 'Login' : 'Daftar';
-      document.getElementById('submit-btn').innerText = (mode === 'login') ? 'Login' : 'Daftar';
-      document.getElementById('phone').style.display = (mode === 'register') ? 'block' : 'none';
-      document.querySelector('.switch-mode').innerHTML = (mode === 'login') ?
-        `Belum punya akun? <u>Daftar di sini</u>` :
-        `Sudah punya akun? <u>Login di sini</u>`;
+  <script>
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      document.getElementById('formTitle').textContent = isLogin ? 'Login' : 'Daftar';
+      document.getElementById('submitBtn').textContent = isLogin ? 'Login' : 'Daftar';
+      document.getElementById('toggleForm').innerHTML = isLogin
+        ? 'Belum punya akun? <a onclick="toggleForm()">Daftar di sini</a>'
+        : 'Sudah punya akun? <a onclick="toggleForm()">Login di sini</a>';
+      document.getElementById('phone').style.display = isLogin ? 'none' : 'block';
     }
 
     function handleSubmit() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
       const phone = document.getElementById('phone').value.trim();
+      const users = JSON.parse(localStorage.getItem("users") || "{}");
 
-      if (!username || !password || (mode === 'register' && !phone)) {
-        document.getElementById('error-msg').innerText = 'Semua input harus diisi!';
+      if (!username || !password || (!isLogin && !phone)) {
+        alert("Harap isi semua field!");
         return;
       }
 
-      let users = JSON.parse(localStorage.getItem('users') || '{}');
-
-      if (mode === 'register') {
+      if (isLogin) {
+        if (!users[username] || users[username].password !== password) {
+          alert("Username atau password salah!");
+          return;
+        }
+        localStorage.setItem("currentUser", username);
+        window.location.href = "menugame.html";
+      } else {
         if (users[username]) {
-          document.getElementById('error-msg').innerText = 'Username sudah terdaftar!';
+          alert("Username sudah terdaftar!");
           return;
         }
         users[username] = { password, phone };
-        localStorage.setItem('users', JSON.stringify(users));
-        localStorage.setItem('currentUser', username);
-        window.location.href = 'menugame.html';
-      } else {
-        if (!users[username]) {
-          document.getElementById('error-msg').innerText = 'Username tidak ditemukan!';
-          return;
-        }
-        if (users[username].password !== password) {
-          document.getElementById('error-msg').innerText = 'Password salah!';
-          return;
-        }
-        localStorage.setItem('currentUser', username);
-        window.location.href = 'menugame.html';
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("currentUser", username);
+        alert("Pendaftaran berhasil! Anda akan dialihkan.");
+        window.location.href = "menugame.html";
       }
     }
   </script>
