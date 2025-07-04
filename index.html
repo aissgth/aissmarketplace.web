@@ -5,14 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aiss Hosting - Layanan Kami</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .typing-effect {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: #00ffff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      border-right: 2px solid #00ffff;
+      padding-right: 5px;
+    }
+
+    @keyframes blink {
+      0% { border-color: #00ffff }
+      50% { border-color: transparent }
+      100% { border-color: #00ffff }
+    }
+
+    .typing-effect {
+      animation: blink 0.75s step-end infinite;
+    }
+
+    .info-card h2 {
+      min-height: 2.5em;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="info-card">
-      <h2>Selamat Datang di <span class="highlight">Aiss Hosting</span></h2>
+      <h2><span id="typing-text" class="typing-effect"></span></h2>
       <p class="intro">Kami menyediakan berbagai layanan yang anda butuhkan</p>
 
       <div class="info-options">
+        <!-- Menu cards -->
         <a href="menumain.html" class="info-option glow-animated">
           <img src="https://files.catbox.moe/3npik2.jpg" alt="Layanan Hosting" />
           <h3>Layanan Hosting</h3>
@@ -41,6 +68,61 @@
       </div>
     </div>
   </div>
-    <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
-      </body>
-        </html>
+  <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
+
+  <script>
+  const texts = [
+    " Selamat Datang ",
+    " di Website Kami ",
+    " Aiss Hosting "
+  ];
+
+  let count = 0;
+  let index = 0;
+  let currentText = '';
+  let letter = '';
+  let isDeleting = false;
+  const speed = 100;
+  const typingText = document.getElementById("typing-text");
+
+  function type() {
+    currentText = texts[count % texts.length];
+
+    if (isDeleting) {
+      letter = currentText.substring(0, index--);
+    } else {
+      letter = currentText.substring(0, index++);
+    }
+
+    typingText.textContent = letter;
+
+    if (!isDeleting && index === currentText.length) {
+      isDeleting = true;
+      setTimeout(type, 2500); // jeda setelah selesai ngetik
+      return;
+    }
+
+    if (isDeleting && index === 0) {
+      isDeleting = false;
+      count++;
+    }
+
+    setTimeout(type, isDeleting ? speed / 2 : speed);
+  }
+
+  type();
+
+  // Tawk.to Live Chat
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/68680749fd19a9190b73064d/1ivb5ou9k';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+</body>
+</html>

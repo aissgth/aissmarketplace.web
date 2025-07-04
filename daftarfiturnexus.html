@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daftar Fitur Bot Aiss</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #00e5ff;
+      border-bottom: 2px solid #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+    .back-button {
+      display: inline-block;
+      background-color: #00e5ff;
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #00bcd4;
+    }
+    h2 {
+      border-bottom: 1px solid #444;
+      color: #00e5ff;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+    ul {
+      padding-left: 25px;
+      line-height: 1.8;
+    }
+    li {
+      list-style: square;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #333;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  🔧 Daftar Lengkap Fitur Bot Aiss Nexus
+</header>
+
+<div class="container">
+  <input type="text" id="searchInput" placeholder="🔍 Cari fitur..." onkeyup="filterFeatures()" style="
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 30px;
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 16px;
+">
+  <!-- Konten Fitur -->
+  <h2>🤖 Fitur Menu Ai</h2>
+  <ul>
+    <li>.ai</li>
+    <li>.ai-answer</li>
+    <li>.aivoice</li>
+    <li>.aoi</li>
+    <li>.ask</li>
+    <li>.audiototext</li>
+    <li>.bing-img</li>
+    <li>.claude</li>
+    <li>.dalle3</li>
+    <li>.esrgan</li>
+    <li>.filterai</li>
+    <li>.flux</li>
+    <li>.gemini</li>
+    <li>.gemini-canvas</li>
+    <li>.gemini-generation</li>
+    <li>.gemini-image</li>
+    <li>.geminiedit</li>
+    <li>.gemma</li>
+    <li>.generateimages</li>
+    <li>.gpt-3</li>
+    <li>.gpt3.5</li>
+    <li>.gpt3.5-0125</li>
+    <li>.gpt4o</li>
+    <li>.gpt4o-mini</li>
+    <li>.gptpicture</li>
+    <li>.groq</li>
+    <li>.hd</li>
+    <li>.hd-v2</li>
+    <li>.llama</li>
+    <li>.meta</li>
+    <li>.nextchat</li>
+    <li>.openai</li>
+    <li>.perplexity</li>
+    <li>.photo2anime</li>
+    <li>.powerbrain</li>
+    <li>.remini</li>
+    <li>.seaart</li>
+    <li>.shinon</li>
+    <li>.simi</li>
+    <li>.speech setid</li>
+    <li>.speech setmodel</li>
+    <li>.starnest</li>
+    <li>.summary</li>
+    <li>.thinkai</li>
+    <li>.ttsjapan-list</li>
+    <li>.ttsjapan text</li>
+    <li>.txt2img</li>
+    <li>.txt2video</li>
+    <li>.upscale</li>
+    <li>.upscalev2</li>
+    <li>.whisper</li>
+    <li>.xiahongshu-ai</li>
+    <li>.youai</li>
+  </ul>
+
+  <h2>🛠️ Fitur Menu Anime</h2>
+  <ul>
+    <li>.amv</li>
+    <li>.anichin</li>
+    <li>.anime</li>
+    <li>.donghua</li>
+    <li>.hytamkan</li>
+    <li>.infoanime</li>
+    <li>.loli</li>
+    <li>.mangapark</li>
+    <li>.ongoing</li>
+    <li>.otakudesu</li>
+    <li>.pictureanime</li>
+    <li>.samehadaku</li>
+    <li>.waifu</li>
+    <li>.zerochan</li>
+  </ul>
+
+  <h2>⬇️ Fitur Menu Downloader</h2>
+  <ul>
+    <li>.aio</li>
+    <li>.applemusic</li>
+    <li>.capcut</li>
+    <li>.douyin</li>
+    <li>.facebook hd</li>
+    <li>.facebook sd</li>
+    <li>.gdrive</li>
+    <li>.gitclone</li>
+    <li>.goredl</li>
+    <li>.goresearch</li>
+    <li>.instagran</li>
+    <li>.instagram-audio</li>
+    <li>.instagran-caption</li>
+    <li>.instagramstory</li>
+    <li>.mediafire</li>
+    <li>.pindownload</li>
+    <li>.play</li>
+    <li>.sfile download</li>
+    <li>.sfile search</li>
+    <li>.sfile upload</li>
+    <li>.snackvideo</li>
+    <li>.soundcloud</li>
+    <li>.spotify</li>
+    <li>.stickerly</li>
+    <li>.threads</li>
+    <li>.tiktok</li>
+    <li>.tiktok-v2</li>
+    <li>.tiktokhd</li>
+    <li>.tiktokmp3</li>
+    <li>.tiktoksearch</li>
+    <li>.tiktokslide</li>
+    <li>.twitter</li>
+    <li>.videy</li>
+    <li>.xhs</li>
+    <li>.ytmp3</li>
+    <li>.ytmp4</li>
+    <li>.ytsearch</li>
+  </ul>
+
+  <h2>🔍 Fitur Menu Finance</h2>
+  <ul>
+    <li>.buybitcoin</li>
+    <li>.deposits</li>
+    <li>.invest</li>
+    <li>.minebitcoin</li>
+    <li>.resetwallet</li>
+    <li>.sellbitcoin</li>
+    <li>.trade</li>
+    <li>.wallet</li>
+    <li>.withdraw</li>
+  </ul>
+  
+  <h2>🪟 Fitur Menu Fun</h2>
+  <ul>
+    <li>.cekalay</li>
+    <li>.cekalim</li>
+    <li>.cekbahagia</li>
+    <li>.cekbaik</li>
+    <li>.cekbeban</li>
+    <li>.cekbego</li>
+    <li>.cekbijak</li>
+    <li>.cekbucin</li>
+    <li>.cekcantik</li>
+    <li>.cekcinta</li>
+    <li>.cekdewasa</li>
+    <li>.cekdihati</li>
+    <li>.cekgacor</li>
+    <li>.cekgalau</li>
+    <li>.cekganteng</li>
+    <li>.cekgaring</li>
+    <li>.cekgaul</li>
+    <li>.cekgay</li>
+    <li>.cekgila</li>
+    <li>.cekgombal</li>
+    <li>cekharam</li>
+    <li>.cekhoror</li>
+    <li>.cekimut</li>
+    <li>.cekjago</li>
+    <li>.cekjahat</li>
+    <li>.cekjelek</li>
+    <li>.cekjodoh</li>
+    <li>.cekjutek</li>
+    <li>.cekkepo</li>
+    <li>.cekkeran</li>
+    <li>.cekkeren</li>
+    <li>.cekkhodam</li>
+    <li>.cekkreatif</li>
+    <li>.cekloyal</li>
+    <li>.ceklucu</li>
+    <li>.cekmager</li>
+    <li>.cekmisterius</li>
+    <li>.cekmodis</li>
+    <li>.cekngantuk</li>
+    <li>.ceknolep</li>
+    <li>.cekopini</li>
+    <li>.cekpemalu</li>
+    <li>.cekpinter</li>
+    <li>.cekpositif</li>
+    <li>.cekpribadi</li>
+    <li>.cekrajin</li>
+    <li>.cekramah</li>
+    <li>.cekrejeki</li>
+    <li>.cekromantis</li>
+    <li>.cekseram</li>
+    <li>.cekserius</li>
+    <li>.ceksiapnikah</li>
+    <li>.ceksuhu</li>
+    <li>.cekviral</li>
+    <li>.cium</li>
+    <li>.kiss</li>
+    <li>.leo</li>
+    <li>.leo start</li>
+    <li>.cek update</li>
+    <li>.yesno</li>
+  </ul>
+
+  <h2>🌸 Fitur Menu Game</h2>
+  <ul>
+    <li>.asahotak</li>
+    <li>.atk</li>
+    <li>.attack</li>
+    <li>.bertarung</li>
+    <li>.blackjack</li>
+    <li>.bomb</li>
+    <li>.buckshot</li>
+    <li>.caklontong</li>
+    <li>.chess</li>
+    <li>.chess join</li>
+    <li>.chess delete</li>
+    <li>.chess start</li>
+    <li>.dadu</li>
+    <li>.deadbox</li>
+    <li>.dimanakah</li>
+    <li>.emojiquiz</li>
+    <li>.examipa</li>
+    <li>.exammtk</li>
+    <li>.family100</li>
+    <li>.fight</li>
+    <li>.hangman</li>
+    <li>.hunter</li>
+    <li>.iqtesy</li>
+    <li>.khodam</li>
+    <li>.kuis</li>
+    <li>.lengkapikalimat</li>
+    <li>.ludo</li>
+    <li>.math</li>
+    <li>.oshi</li>
+    <li>.question</li>
+    <li>.quiz</li>
+    <li>.quizz</li>
+    <li>.sambungkata</li>
+    <li>.siapakahaku</li>
+    <li>.slot</li>
+    <li>.spy clue</li>
+    <li>.spy create</li>
+    <li>.spy end</li>
+    <li>.spy join</li>
+    <li>.spy start</li>
+    <li>.spy tutorial</li>
+    <li>.spy vote</li>
+    <li>.suit</li>
+    <li>.suitpvp</li>
+    <li>.suprisedeal</li>
+    <li>.susunkata</li>
+    <li>.tebakangka</li>
+    <li>.tebakanime</li>
+    <li>.tebakbendera</li>
+    <li>.tebakchara</li>
+    <li>.tebakemoji</li>
+    <li>.tebakgambar</li>
+    <li>.tebakgame</li>
+    <li>.tebakhewan</li>
+    <li>.tebakjiko</li>
+    <li>.tebakkabupaten</li>
+    <li>.tebakkata</li>
+    <li>.tebakkimia</li>
+    <li>.tebaklagu</li>
+    <li>.tebaklirik</li>
+    <li>.tebaklogo</li>
+    <li>.tebaksiapa</li>
+    <li>.tebaksurah</li>
+    <li>.tebaktebakan</li>
+    <li>.tekateki</li>
+    <li>.tictactoe</li>
+    <li>.trivia</li>
+    <li>.ttt</li>
+  </ul>
+
+  <h2>🕌 Fitur Menu Group</h2>
+  <ul>
+    <li>.+nomor</li>
+    <li>.schedule hapus</li>
+    <li>.schedule list</li>
+    <li>.absen</li>
+    <li>.add nomor</li>
+    <li>.addlink</li>
+    <li>.addstore</li>
+    <li>.afk</li>
+    <li>.biodatamember</li>
+    <li>.blacklist</li>
+    <li>.cekabsen</li>
+    <li>.ceksewa</li>
+    <li>.closetime</li>
+    <li>.delete</li>
+    <li>.dellink</li>
+    <li>.delstore</li>
+    <li>.demote</li>
+    <li>.disable</li>
+    <li>.enable</li>
+    <li>.getbio</li>
+    <li>.getmsg</li>
+    <li>.getpp</li>
+    <li>.group open/close</li>
+    <li>.hadir</li>
+    <li>.hapusabsen</li>
+    <li>.hapuslink</li>
+    <li>.hidetag</li>
+    <li>.infogrup</li>
+    <li>.inspect</li>
+    <li>.kick</li>
+    <li>.kickall</li>
+    <li>.linkgrup</li>
+    <li>.listabsen</li>
+    <li>.listblacklist</li>
+    <li>.listgrup</li>
+    <li>.listlink</li>
+    <li>.listmember</li>
+    <li>.listsewa</li>
+    <li>.liststore</li>
+    <li>.opentime</li>
+    <li>.promote</li>
+    <li>.resetabsen</li>
+    <li>.resettotalchat</li>
+    <li>.revoke</li>
+    <li>.sdesc</li>
+    <li>.setadzan</li>
+    <li>.setbye</li>
+    <li>.setdesc</li>
+    <li>.setnamagc</li>
+    <li>.setppgc</li>
+    <li>.setwelcome</li>
+    <li>.tagadmin</li>
+    <li>.tagall</li>
+    <li>.tagme</li>
+    <li>.tagpremium</li>
+    <li>.totag</li>
+    <li>.totalchat</li>
+    <li>.unblacklist</li>
+    <li>.updatestore</li>
+  </ul>
+
+  <h2>📡 Fitur Menu Internet</h2>
+  <ul>
+    <li>.cuaca</li>
+    <li>.douyins</li>
+    <li>.fetch</li>
+    <li>.gempa</li>
+    <li>.get</li>
+    <li>.gimage</li>
+    <li>.githubsearch</li>
+    <li>.google</li>
+    <li>.komiku</li>
+    <li>.lahelu</li>
+    <li>.layarkaca</li>
+    <li>.lirik</li>
+    <li>.mangapark</li>
+    <li>.mlstalk</li>
+    <li>.npmjs</li>
+    <li>.otakudesu</li>
+    <li>.pinterest</li>
+    <li>.pixai</li>
+    <li>.pixiv</li>
+    <li>.samehadaku</li>
+    <li>.ssweb</li>
+    <li>.subdomainlook</li>
+    <li>.tenor</li>
+    <li>.wallpapers</li>
+    <li>.wiki</li>
+  </ul>
+  
+  <h2>🕌 Fitur Menu Islamic</h2>
+  <ul>
+    <li>.hadis</li>
+    <li>.ramadhan</li>
+    <li>.salat</li>
+  </ul>
+  
+  <h2>🏞 Fitur Menu Kehidupan</h2>
+  <ul>
+    <li>.anak</li>
+    <li>.barangku</li>
+    <li>.bekerja</li>
+    <li>.cekhamil</li>
+    <li>.cerai</li>
+    <li>.dompet</li>
+    <li>.ikhlasin</li>
+    <li>.makan</li>
+    <li>.masak</li>
+    <li>.menikah</li>
+    <li>.namabayi</li>
+    <li>.ngewe</li>
+    <li>.putus</li>
+    <li>.tembak</li>
+  </ul>
+  
+  <h2>📱 Fitur Menu Main</h2>
+  <ul>
+    <li>.@verify</li>
+    <li>.animexin</li>
+    <li>.bannedlist</li>
+    <li>.ceksn</li>
+    <li>.clearcacahe</li>
+    <li>.clearunreg</li>
+    <li>.confes</li>
+    <li>.creator</li>
+    <li>.daftar</li>
+    <li>.edit text</li>
+    <li>.example</li>
+    <li>.imgen</li>
+    <li>.limit</li>
+    <li>.menfes</li>
+    <li>.menu</li>
+    <li>.os</li>
+    <li>.owner</li>
+    <li>.payment</li>
+    <li>.playstore</li>
+    <li>.premium</li>
+    <li>.register</li>
+    <li>.regmail</li>
+    <li>.runtime</li>
+    <li>.searchplaystore</li>
+    <li>.sewa</li>
+    <li>.stopconfes</li>
+    <li>.totalfitur</li>
+    <li>.toviewonce</li>
+    <li>.unregister</li>
+    <li>.upsw</li>
+    <li>.user</li>
+    <li>.verifcode</li>
+    <li>.webnovel</li>
+  </ul>
+
+  <h2>🖊 Fitur Menu Maker</h2>
+  <ul>
+    <li>.1917</li>
+    <li>.1917style</li>
+    <li>.3dchristmas</li>
+    <li>.3dstone</li>
+    <li>.kodam</li>
+    <li>.advancedglow</li>
+    <li>.berry</li>
+    <li>.biscuit</li>
+    <li>.blackpink</li>
+    <li>.blackpinklogi</li>
+    <li>.blackpinkstyle</li>
+    <li>.blood</li>
+    <li>.bloodglas</li>
+    <li>.bluearchive</li>
+    <li>.brokenglass</li>
+    <li>.candy</li>
+    <li>.carbon</li>
+    <li>.cartoonstyle</li>
+    <li>.chocolate</li>
+    <li>.christmas</li>
+    <li>.circuit</li>
+    <li>.cloud</li>
+    <li>.darkgold</li>
+    <li>.deepsea</li>
+    <li>.deletingtext</li>
+    <li>.demon</li>
+    <li>.discovery</li>
+    <li>.dropwater</li>
+    <li>.effectclouds</li>
+    <li>.fiction</li>
+    <li>.firework</li>
+    <li>.flag3dtext</li>
+    <li>.flagtext</li>
+    <li>.freecreate</li>
+    <li>.fruitjuice</li>
+    <li>.galaxystyle</li>
+    <li>.galaxywallpaper</li>
+    <li>.glitch</li>
+    <li>.glitchtext</li>
+    <li>.glowingtext</li>
+    <li>.glue</li>
+    <li>.gradienttext</li>
+    <li>.graffitibike</li>
+    <li>.halowen</li>
+    <li>.harrypotter</li>
+    <li>.hitamkan</li>
+    <li>.honey</li>
+    <li>.ice</li>
+    <li>.joker</li>
+    <li>.lavaa</li>
+    <li>.leaves</li>
+    <li>.lighteffects</li>
+    <li>.listfontmeme</li>
+    <li>.logomaker</li>
+    <li>.luxurygold</li>
+    <li>.magma</li>
+    <li>.maker-qris</li>
+    <li>.makingneon</li>
+    <li>.matrix</li>
+    <li>.meme</li>
+    <li>.meme1</li>
+    <li>.memegen</li>
+    <li>.memelist</li>
+    <li>.memetemplate</li>
+    <li>.matalic</li>
+    <li>.miq</li>
+    <li>.multicolor</li>
+    <li>.multicoloredneon</li>
+    <li>.neondevil</li>
+    <li>.neonglitch</li>
+    <li>.neonlight</li>
+    <li>.papercut</li>
+    <li>.papercutstyle</li>
+    <li>.pencil</li>
+    <li>.pixelglitch</li>
+    <li>.putihkan</li>
+    <li>.rainbow</li>
+    <li>.rock</li>
+    <li>.royaltext</li>
+    <li>.sand</li>
+    <li>.sandsummer</li>
+    <li>.scifi</li>
+    <li>.skeleton</li>
+    <li>.snow</li>
+    <li>.sparklechristmas</li>
+    <li>.spooky</li>
+    <li>.strawberry</li>
+    <li>.summerbeach</li>
+    <li>.thunder</li>
+    <li>.toxic</li>
+    <li>.transformer</li>
+    <li>.typographytext</li>
+    <li>.underwater</li>
+    <li>.underwatertext</li>
+    <li>.watercolor</li>
+    <li>.watercolortext</li>
+    <li>.waterpipe</li>
+    <li>.wicker</li>
+    <li>.wood</li>
+    <li>.writetext</li>
+    <li>.ytcoment</li>
+  </ul>
+
+  <h2>👑 Fitur Menu Owner</h2>
+  <ul>
+    <li>.addblock</li>
+    <li>.addlimit</li>
+    <li>.addmoney</li>
+    <li>.addprem</li>
+    <li>.addsewa</li>
+    <li>.archive</li>
+    <li>.backup</li>
+    <li>.banned</li>
+    <li>.bannedchat</li>
+    <li>.bcgc</li>
+    <li>.block</li>
+    <li>.blocklist</li>
+    <li>.cekapi</li>
+    <li>.cleandb</li>
+    <li>.cleandblist</li>
+    <li>.clearchat</li>
+    <li>.cleartmp</li>
+    <li>.clonegrup</li>
+    <li>.delblock</li>
+    <li>.deletepremiumgrup</li>
+    <li>.delmoney</li>
+    <li>.delprem</li>
+    <li>.delsewa</li>
+    <li>.df</li>
+    <li>.disable</li>
+    <li>.enable</li>
+    <li>.fixdatabase</li>
+    <li>.getdb</li>
+    <li>.getfile</li>
+    <li>.getplugin</li>
+    <li>.gf</li>
+    <li>.gp</li>
+    <li>.h</li>
+    <li>.hapuslimit</li>
+    <li>.hostname</li>
+    <li>.join</li>
+    <li>.leave</li>
+    <li>.listkontaksw</li>
+    <li>.listsw</li>
+    <li>.myip</li>
+    <li>.premiumgrup</li>
+    <li>.public</li>
+    <li>.resetlimit</li>
+    <li>.reserprefix</li>
+    <li>.resetuser</li>
+    <li>.rm</li>
+    <li>.save plugin</li>
+    <li>.save scraper</li>
+    <li>.savekontaksw</li>
+    <li>.self</li>
+    <li>.setppbot</li>
+    <li>.setprefix</li>
+    <li>.setprivacy</li>
+    <li>.subdo</li>
+    <li>.syntax</li>
+    <li>.template doc</li>
+    <li>.template gif</li>
+    <li>.template image</li>
+    <li>.template text</li>
+    <li>.unbanchat</li>
+    <li>.unbanned</li>
+    <li>.unblock</li>
+    <li>.upswtag</li>
+  </ul>
+  
+  <h2>🌐 Fitur Menu Panel</h2>
+  <ul>
+    <li>.createserver</li>
+    <li>.createuser</li>
+    <li>.deleteserver</li>
+    <li>.deleteuser</li>
+    <li>.detailserver</li>
+    <li>.detailuser</li>
+    <li>.listserver</li>
+    <li>.listuser</li>
+  </ul>
+  
+  <h2>📖 Fitur Menu Qur'an</h2>
+  <ul>
+    <li>.listsurat</li>
+    <li>.surat</li>
+  </ul>
+  
+  <h2>🏹 Fitur Rpg</h2>
+  <ul>
+    <li>.akunyt</li>
+    <li>.anak</li>
+    <li>.bank</li>
+    <li>.barangku</li>
+    <li>.bekerja</li>
+    <li>.buatsimmasinis</li>
+    <li>.buatkode</li>
+    <li>.buatsim</li>
+    <li>.cekhamil</li>
+    <li>.cerai</li>
+    <li>.claim</li>
+    <li>.createbank</li>
+    <li>.createyt</li>
+    <li>.dompet</li>
+    <li>.hapusakunyt</li>
+    <li>.hapusbank</li>
+    <li>.ikhlasin</li>
+    <li>.isibbmkereta</li>
+    <li>.isibbm</li>
+    <li>.kandang</li>
+    <li>.kereta beli</li>
+    <li>.listkode</li>
+    <li>.liveyt</li>
+    <li>.makan</li>
+    <li>.masak</li>
+    <li>.masinis</li>
+    <li>.menikah</li>
+    <li>.mission</li>
+    <li>.nabung</li>
+    <li>.namabayi</li>
+    <li>.ngewe</li>
+    <li>.penerbangan</li>
+    <li>.perjalanan</li>
+    <li>.pesawat beli</li>
+    <li>.pilot</li>
+    <li>.putus</li>
+    <li>.redeem</li>
+    <li>.tarik</li>
+    <li>.tembak</li>
+    <li>.upgradebank</li>
+    <li>.ww</li>
+    <li>.wwpc</li>
+    <li>.xtiktok</li>
+  </ul>
+  
+  <h2>🐚 Fitur Menu Speech</h2>
+  <ul>
+    <li>.speech setid</li>
+    <li>.speech setmodel</li>
+  </ul>
+  
+  <h2>👀 Menu Stalker</h2>
+  <ul>
+    <li>.tiktokstalk</li>
+    <li>.ytstalk</li>
+    <li>.ffstalk</li>
+    <li>.githubstalk</li>
+    <li>.igstalk</li>
+    <li>.mlstalk</li>
+    <li>.stalkgenshin</li>
+  </ul>
+  
+  <h2>🎞 Fitur Menu Sticker</h2>
+  <ul>
+    <li>.attp</li>
+    <li>.brat</li>
+    <li>.bratv2</li>
+    <li>.emoji</li>
+    <li>.emojimix</li>
+    <li>.furbrat</li>
+    <li>.qc</li>
+    <li>.semoji</li>
+    <li>.sfull</li>
+    <li>.sgif</li>
+    <li>.stickeravatar</li>
+    <li>.stickertelegram</li>
+    <li>.toimg</li>
+    <li>.ttp</li>
+    <li>.wm</li>
+  </ul>
+  
+  <h2>🛍 Fitur Menu Store</h2>
+  <ul>
+    <li>.addstore</li>
+    <li>.delstore</li>
+    <li>.getmsg</li>
+    <li>.liststore</li>
+    <li>.updatestore</li>
+  </ul>
+  
+  <h2>⚙️ Fitur Menu Tools</h2>
+  <ul>
+    <li>.2fa</li>
+    <li>.addalarm</li>
+    <li>.aivn</li>
+    <li>.anya</li>
+    <li>.autotranslate id</li>
+    <li>.autotranslate off</li>
+    <li>.autotranslate on</li>
+    <li>.autotranslate reset</li>
+    <li>.backgroundcolor</li>
+    <li>.base64decode</li>
+    <li>.base64encode</li>
+    <li>.beauty</li>
+    <li>.brat</li>
+    <li>.bratv2</li>
+    <li>.buatnote</li>
+    <li>.calli</li>
+    <li>.cekdns</li>
+    <li>.cekid</li>
+    <li>.ci</li>
+    <li>.dashboard</li>
+    <li>.delalarm</li>
+    <li>.deobfuscator</li>
+    <li>.encrypt</li>
+    <li>.gura</li>
+    <li>.hapusnote</li>
+    <li>.hidetag</li>
+    <li>.hitungwr</li>
+    <li>.hytamkan</li>
+    <li>.img2text</li>
+    <li>.instrument</li>
+    <li>.ipdns</li>
+    <li>.iqc (Fitur Paling Banyak DiCari)</li>
+    <li>.kaela</li>
+    <li>.kobo</li>
+    <li>.kompres</li>
+    <li>.korone</li>
+    <li>.kroni</li>
+    <li>.kurs</li>
+    <li>.listalarm</li>
+    <li>.listnote</li>
+    <li>.luna</li>
+    <li>.map</li>
+    <li>.maps</li>
+    <li>.miko</li>
+    <li>.ngl</li>
+    <li>.npmdownloader</li>
+    <li>.ocr</li>
+    <li>.pastebin</li>
+    <li>.pekora</li>
+    <li>.prompt</li>
+    <li>.qrcode</li>
+    <li>.rch</li>
+    <li>.readfile</li>
+    <li>.readmore</li>
+    <li>.readqr</li>
+    <li>.readviewonce</li>
+    <li>.reine</li>
+    <li>.removebg</li>
+    <li>.sfile download</li>
+    <li>.sfile search</li>
+    <li>.sfile upload</li>
+    <li>.shortlink</li>
+    <li>.shorturl</li>
+    <li>.smeme</li>
+    <li>.spoiler</li>
+    <li>.subaru</li>
+    <li>.terabox</li>
+    <li>.tinyurl</li>
+    <li>.tocjs</li>
+    <li>.todescription</li>
+    <li>.toesm</li>
+    <li>.tomp3</li>
+    <li>.toptv</li>
+    <li>.tovideo</li>
+    <li>.tovn</li>
+    <li>.trackip</li>
+    <li>.transkripyt</li>
+    <li>.translate text</li>
+    <li>.tts</li>
+    <li>.ttsjapan</li>
+    <li>.ttsv2</li>
+    <li>.upload</li>
+    <li>.vocalremover</li>
+    <li>.volume</li>
+    <li>.wavel</li>
+    <li>.zeta</li>
+  </ul>
+  
+  <h2>💸 Fitur Menu Topup</h2>
+  <ul>
+    <li>.account</li>
+    <li>.addsaldo</li>
+    <li>.akun</li>
+    <li>.buypremium</li>
+    <li>.buysewa</li>
+    <li>.cancelcharge</li>
+    <li>.cek_transaksi</li>
+    <li>.ceksaldo</li>
+    <li>.charge</li>
+    <li>.isisaldo</li>
+    <li>.kirimbukti</li>
+    <li>.lapak_cek</li>
+    <li>.lapak_list</li>
+    <li>.lapak_order</li>
+    <li>.litensi_harga</li>
+    <li>.litensi_layanan</li>
+    <li>.litensi_negara</li>
+    <li>.litensi_operator</li>
+    <li>.litensi_order</li>
+    <li>.minsaldo</li>
+    <li>.order_sms</li>
+    <li>.orderkuota</li>
+    <li>.prabayar</li>
+    <li>.ssbukti</li>
+    <li>.status_sms</li>
+    <li>.struk</li>
+    <li>.topup</li>
+  </ul>
+  
+  <h2>🌐 Fitur Menu Uploader</h2>
+  <ul>
+    <li>.catbox</li>
+    <li>.cdn</li>
+    <li>.top4top</li>
+    <li>.tovidey</li>
+    <li>.upload</li>
+  </ul>
+  
+  <h2>☎ Fitur Menu Youtube</h2>
+  <ul>
+    <li>.Rankyt</li>
+  </ul>
+  
+<a href="menufitur.html" class="back-button">← Kembali</a>
+</div>
+  
+<footer>
+  &copy; 2025 Aiss Hosting. Semua fitur bot ditampilkan di sini untuk referensi pengguna.
+</footer>
+<script>
+  const allFeatures = document.querySelectorAll('li');
+  const total = allFeatures.length;
+
+  // Membuat elemen baru untuk menampilkan total
+  const totalDiv = document.createElement('div');
+  totalDiv.style.marginTop = '20px';
+  totalDiv.style.fontSize = '18px';
+  totalDiv.style.fontWeight = 'bold';
+  totalDiv.style.color = '#00e5ff';
+  totalDiv.textContent = `🧮 Total Fitur: ${total}`;
+
+  // Sisipkan total fitur di atas daftar pertama
+  const container = document.querySelector('.container');
+  container.insertBefore(totalDiv, container.children[1]);
+  
+function filterFeatures() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const allSections = document.querySelectorAll('.container h2, .container ul, .container li');
+
+  allSections.forEach(el => {
+    if (el.tagName === "LI") {
+      el.style.display = el.textContent.toLowerCase().includes(input) ? "list-item" : "none";
+    }
+  });
+
+  // Sembunyikan judul dan <ul> jika semua item <li> di dalamnya disembunyikan
+  const sections = document.querySelectorAll('.container h2');
+  sections.forEach(section => {
+    const ul = section.nextElementSibling;
+    const lis = ul.querySelectorAll('li');
+    const visibleLis = [...lis].filter(li => li.style.display !== "none");
+    section.style.display = ul.style.display = visibleLis.length ? "block" : "none";
+  });
+}
+</script>
+</body>
+</html>

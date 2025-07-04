@@ -66,7 +66,7 @@
 <body>
 
 <header>
-  🔧 Daftar Lengkap Fitur Bot Aiss Hosting
+  🔧 Daftar Lengkap Fitur Bot Aiss Assisten
 </header>
 
 <div class="container">
@@ -753,6 +753,22 @@
   &copy; 2025 Aiss Hosting. Semua fitur bot ditampilkan di sini untuk referensi pengguna.
 </footer>
 <script>
+  // Mengambil semua elemen <li> sebagai fitur
+  const allFeatures = document.querySelectorAll('li');
+  const total = allFeatures.length;
+
+  // Membuat elemen baru untuk menampilkan total
+  const totalDiv = document.createElement('div');
+  totalDiv.style.marginTop = '20px';
+  totalDiv.style.fontSize = '18px';
+  totalDiv.style.fontWeight = 'bold';
+  totalDiv.style.color = '#00e5ff';
+  totalDiv.textContent = `🧮 Total Fitur: ${total}`;
+
+  // Sisipkan total fitur di atas daftar pertama
+  const container = document.querySelector('.container');
+  container.insertBefore(totalDiv, container.children[1]); // Setelah input pencarian
+  
 function filterFeatures() {
   const input = document.getElementById('searchInput').value.toLowerCase();
   const allSections = document.querySelectorAll('.container h2, .container ul, .container li');
