@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daftar Fitur Bot Aiss</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #00e5ff;
+      border-bottom: 2px solid #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+    .back-button {
+      display: inline-block;
+      background-color: #00e5ff;
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #00bcd4;
+    }
+    h2 {
+      border-bottom: 1px solid #444;
+      color: #00e5ff;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+    ul {
+      padding-left: 25px;
+      line-height: 1.8;
+    }
+    li {
+      list-style: square;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #333;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  🔧 Daftar Lengkap Fitur Bot Aiss Hosting
+</header>
+
+<div class="container">
+  <input type="text" id="searchInput" placeholder="🔍 Cari fitur..." onkeyup="filterFeatures()" style="
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 30px;
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 16px;
+">
+  <!-- Konten Fitur -->
+  <h2>🤖 Fitur Admin</h2>
+  <ul>
+    <li>.blacklist</li>
+    <li>.addbadword</li>
+    <li>.add</li>
+    <li>.antilink</li>
+    <li>.unblacklist</li>
+    <li>.ban</li>
+    <li>.banfitur</li>
+    <li>.delbadword</li>
+    <li>.del</li>
+    <li>.delete</li>
+    <li>.demoteall</li>
+    <li>.demote</li>
+    <li>.editdesk</li>
+    <li>.editdeskripsi</li>
+    <li>.editsubjek</li>
+    <li>.editsubject</li>
+    <li>.editsubjeck</li>
+    <li>.editjudul</li>
+    <li>.fixchat</li>
+    <li>.gcsider</li>
+    <li>.giveaway</li>
+    <li>.mulaigiveaway</li>
+    <li>.grub</li>
+    <li>.group</li>
+    <li>.grup</li>
+    <li>.groub</li>
+    <li>.gc</li>
+    <li>.hidetag</li>
+    <li>.h</li>
+    <li>.hidetak</li>
+    <li>.kick</li>
+    <li>.kicksider</li>
+    <li>.listabsen</li>
+    <li>.listadmin</li>
+    <li>.listalluser</li>
+    <li>.listmember</li>
+    <li>.listnoabsen</li>
+    <li>.listban</li>
+    <li>.mute</li>
+    <li>.unmute</li>
+    <li>.off</li>
+    <li>.on</li>
+    <li>.promoteall</li>
+    <li>.promote</li>
+    <li>.resetlinkgc</li>
+    <li>.resetlinkgrup</li>
+    <li>.resetlinkgroup</li>
+    <li>.resetlinkgrub</li>
+    <li>.resetlinkgroub</li>
+    <li>.resetgc</li>
+    <li>.setdemote</li>
+    <li>.setleft</li>
+    <li>.setpromote</li>
+    <li>.settemplatelist</li>
+    <li>.templatelist</li>
+    <li>.settemplatewelcome</li>
+    <li>.templatewelcome</li>
+    <li>.setwelcome</li>
+    <li>.setclosegc</li>
+    <li>.setopengc</li>
+    <li>.setppgc</li>
+    <li>.setppgroub</li>
+    <li>.setppgrub</li>
+    <li>.setppgroup</li>
+    <li>.setppgroup</li>
+    <li>.setppgrup</li>
+    <li>.slr</li>
+    <li>.tagall</li>
+    <li>.teswelcome</li>
+    <li>.top</li>
+    <li>.resettotalchat</li>
+    <li>.totalchat</li>
+    <li>.unban</li>
+    <li>.unban fitur</li>
+    <li>.warn</li>
+    <li>.warning</li>
+    <li>.listwarning</li>
+    <li>.listwarn</li>
+    <li>.delwarn</li>
+    <li>.debugwarn</li>
+  </ul>
+
+  <h2>🛠️ Fitur Ai</h2>
+  <ul>
+    <li>.ai</li>
+    <li>.simi</li>
+    <li>.vn</li>
+    <li>.voiceai</li>
+  </ul>
+
+  <h2>⬇️ Fitur Anime</h2>
+  <ul>
+    <li>.waifu</li>
+    <li>.nexo</li>
+    <li>.shinobu</li>
+    <li>.megumin</li>
+    <li>.bully</li>
+    <li>.cuddle</li>
+    <li>.cry</li>
+    <li>.hug</li>
+    <li>.awoo</li>
+    <li>.kiss</li>
+    <li>.lick</li>
+    <li>.pat</li>
+    <li>.smug</li>
+    <li>.bonk</li>
+    <li>.yeet</li>
+    <li>.blush</li>
+    <li>.smile</li>
+    <li>.wave</li>
+    <li>.highfive</li>
+    <li>.handhold</li>
+    <li>.nom</li>
+    <li>.bite</li>
+    <li>.glomp</li>
+    <li>.slap</li>
+    <li>.kill</li>
+    <li>.happy</li>
+    <li>.wink</li>
+    <li>.poke</li>
+    <li>.dance</li>
+    <li>.cringe</li>
+  </ul>
+
+  <h2>🔍 Fitur Berita</h2>
+  <ul>
+    <li>.antara</li>
+    <li>.cnn</li>
+    <li>.cnbc</li>
+    <li>.jpnn</li>
+    <li>.kumparan</li>
+    <li>.merdeka</li>
+    <li>.okezone</li>
+    <li>.republika</li>
+    <li>.sindonews</li>
+    <li>.tempo</li>
+    <li>.tribun</li>
+  </ul>
+
+  <h2>🌸 Fitur Download</h2>
+  <ul>
+    <li>.fb</li>
+    <li>.facebook</li>
+    <li>.ig</li>
+    <li>.instagram</li>
+    <li>.igfoto</li>
+    <li>.instagramfoto</li>
+    <li>.lirik</li>
+    <li>.pin</li>
+    <li>.pinterest</li>
+    <li>.play</li>
+    <li>.spotify</li>
+    <li>.tiktoksearch</li>
+    <li>.ttsearch</li>
+    <li>.tts</li>
+    <li>.ttslide</li>
+    <li>.tiktokslide</li>
+    <li>.tt</li>
+    <li>.tiktok</li>
+    <li>.tiktokmp3</li>
+    <li>.ttmp3</li>
+    <li>.tw</li>
+    <li>.twitter</li>
+    <li>.ytmp3</li>
+    <li>.ytmp4</li>
+    <li>.yts</li>
+    <li>.ytsearch</li>
+  </ul>
+
+  <h2>🕌 Fitur Editor</h2>
+  <ul>
+    <li>.blur</li>
+    <li>.duotone</li>
+    <li>.flipx</li>
+    <li>.flipy</li>
+    <li>.grayscale</li>
+    <li>.resize</li>
+    <li>.rotate</li>
+    <li>.sepia</li>
+    <li>.tajam</li>
+    <li>.wanted</li>
+    <li>.wasted</li>
+  </ul>
+
+  <h2>🔮 Fitur Features Add</h2>
+  <ul>
+    <li>.alarm</li>
+    <li>.cekrekening</li>
+    <li>.ceksaldo</li>
+    <li>.dompet</li>
+    <li>.saldo</li>
+    <li>.dj</li>
+    <li>.donasi</li>
+    <li>.hackwa</li>
+    <li>.lb</li>
+    <li>.text</li>
+    <li>.longtext</li>
+    <li>.pay</li>
+    <li>.payment</li>
+    <li>.ramal</li>
+    <li>.ramalan</li>
+    <li>.resetmoney</li>
+    <li>.album</li>
+    <li>.rpg</li>
+    <li>.bangkrut</li>
+    <li>.bank</li>
+    <li>.bayarpinjam</li>
+    <li>.begal</li>
+    <li>.berdoa</li>
+    <li>.casino</li>
+    <li>.daily</li>
+    <li>.duel</li>
+    <li>.favorit</li>
+    <li>.gacha</li>
+    <li>.gift</li>
+    <li>.gali</li>
+    <li>.hunt</li>
+    <li>.invest</li>
+    <li>.item</li>
+    <li>.jual</li>
+    <li>.kerja</li>
+    <li>.korupsi</li>
+    <li>.kripto</li>
+    <li>.maling</li>
+    <li>.mancing</li>
+    <li>.peti</li>
+    <li>.pinbank</li>
+    <li>.pinjam</li>
+    <li>.rampok</li>
+    <li>.ritual</li>
+    <li>.sambungkata</li>
+    <li>.shio</li>
+    <li>.slot</li>
+    <li>.slot2</li>
+    <li>.spin</li>
+    <li>.suitjepang</li>
+    <li>.tantang</li>
+    <li>.terima</li>
+    <li>.tebak</li>
+    <li>.tembak</li>
+    <li>.temukan</li>
+    <li>.transfer</li>
+    <li>.katakata</li>
+    <li>.ultah</li>
+    <li>.listultah</li>
+  </ul>
+
+  <h2>🎲 Fitur Games</h2>
+  <ul>
+    <li>.bj</li>
+    <li>.blackjack</li>
+    <li>.cak</li>
+    <li>.caklontong</li>
+    <li>.kodam</li>
+    <li>.cekkodam</li>
+    <li>.cekkhodam</li>
+    <li>.cekodam</li>
+    <li>.dare</li>
+    <li>.familiy100</li>
+    <li>.kuismath</li>
+    <li>.math</li>
+    <li>.snakes</li>
+    <li>.suit</li>
+    <li>.tebak</li>
+    <li>.tebakangka</li>
+    <li>.tebakbendera</li>
+    <li>.tebakbom</li>
+    <li>.tebakgambar</li>
+    <li>.tebakhewan</li>
+    <li>.tebakkalimat</li>
+    <li>.tebakkata</li>
+    <li>.tebaklagu</li>
+    <li>.tebaklirik</li>
+    <li>.ttc</li>
+    <li>.ttt</li>
+    <li>.tictactoe</li>
+    <li>.truth</li>
+  </ul>
+
+  <h2>🎨 Fitur Group</h2>
+  <ul>
+    <li>.absen</li>
+    <li>.afk</li>
+    <li>.badword</li>
+    <li>.listbadword</li>
+    <li>.aiss</li>
+    <li>.buylimit</li>
+    <li>.cekprem</li>
+    <li>.cekpremium</li>
+    <li>.ceksewa</li>
+    <li>.claim</li>
+    <li>.getpic</li>
+    <li>.ikut</li>
+    <li>.infogc</li>
+    <li>.infogrub</li>
+    <li>.infogroub</li>
+    <li>.infogrup</li>
+    <li>.infogroup</li>
+    <li>.linkgrup</li>
+    <li>.linkgroup</li>
+    <li>.linkgc</li>
+    <li>.linkgrub</li>
+    <li>.linkgroub</li>
+    <li>.me</li>
+    <li>.limit</li>
+    <li>.me2</li>
+    <li>.limit2</li>
+    <li>.sendlimit</li>
+    <li>.sendmoney</li>
+    <li>.setakun</li>
+  </ul>
+  
+  <h2>📢 Fitur Information</h2>
+  <ul>
+    <li>.artimimpi</li>
+    <li>.artinama</li>
+    <li>.codcek</li>
+    <li>.cod</li>
+    <li>.ffcek</li>
+    <li>.ff</li>
+    <li>.infogempa</li>
+    <li>.kbbi</li>
+    <li>.ml</li>
+    <li>.mlcek</li>
+    <li>.pubg</li>
+    <li>.pubgcek</li>
+    <li>.stalktiktok</li>
+  </ul>
+  
+  <h2>🕌 Fitur Islami</h2>
+  <ul>
+    <li>.azan</li>
+    <li>.doa</li>
+    <li>.hadis</li>
+    <li>.hadist</li>
+    <li>.hadits</li>
+    <li>.jadwalsholat</li>
+    <li>.jadwalshalat</li>
+    <li>.jadwalsholat2</li>
+    <li>.listsurah</li>
+    <li>.listsuroh</li>
+    <li>.niatsholat</li>
+    <li>.niatshalat</li>
+    <li>.surah</li>
+    <li>.suroh</li>
+    <li>.zikir</li>
+  </ul>
+  
+  <h2>🐚 Fitur Kerang Ajaib</h2>
+  <ul>
+    <li>.bisakah</li>
+    <li>.cekbucin</li>
+    <li>.cekcantik</li>
+    <li>.cekganteng</li>
+    <li>.cekgila</li>
+    <li>.cekmati</li>
+    <li>.cektolol</li>
+    <li>.cekumur</li>
+    <li>.jadian</li>
+    <li>.kapankah</li>
+  </ul>
+  
+  <h2>🖨 Fitur Maker</h2>
+  <ul>
+    <li>.attp</li>
+    <li>.attp2</li>
+    <li>.brat</li>
+    <li>.brat2</li>
+    <li>.bratcustom</li>
+    <li>.bratvid</li>
+    <li>.qc</li>
+    <li>.qc2</li>
+    <li>.qcstick</li>
+    <li>.smeme</li>
+    <li>.sticker</li>
+    <li>.stiker</li>
+    <li>.s</li>
+    <li>.tovid</li>
+    <li>.togif</li>
+    <li>.ttp</li>
+    <li>.wm</li>
+  </ul>
+  
+  <h2>♻️ Fitur More</h2>
+  <ul>
+    <li>.apikey</li>
+    <li>.cekapikey</li>
+    <li>.checkapikey</li>
+    <li>.infoais</li>
+    <li>.ratelimit</li>
+    <li>.report</li>
+    <li>.runtime</li>
+    <li>.sc</li>
+    <li>.script</li>
+    <li>.style</li>
+    <li>.style2</li>
+    <li>.style3</li>
+    <li>.style4</li>
+    <li>.style5</li>
+    <li>.style6</li>
+    <li>.style7</li>
+    <li>.style8</li>
+    <li>.style9</li>
+    <li>.style10</li>
+    <li>.version</li>
+    <li>.versi</li>
+  </ul>
+  
+  <h2>👑 Fitur Owner</h2>
+  <ul>
+    <li>.addglobalbadword</li>
+    <li>.addlevel</li>
+    <li>.addlimit</li>
+    <li>.addmoney</li>
+    <li>.addowner</li>
+    <li>.addlugin</li>
+    <li>.addplugins</li>
+    <li>.addprem</li>
+    <li>.addpremium</li>
+    <li>.addrespon</li>
+    <li>.addpremgrub</li>
+    <li>.addpremiumgrub</li>
+    <li>.backup</li>
+    <li>.oblacklist</li>
+    <li>.block</li>
+    <li>.buatstory</li>
+    <li>.buatstori</li>
+    <li>.upsw</li>
+    <li>.cleandb</li>
+    <li>.clearsesi</li>
+    <li>.creategrup</li>
+    <li>.creategroup</li>
+    <li>.creategc</li>
+    <li>.creategrub</li>
+    <li>.creategroub</li>
+    <li>.delglobalbadword</li>
+    <li>.delowner</li>
+    <li>.delplugin</li>
+    <li>.delplugins</li>
+    <li>.delprem</li>
+    <li>.delpremium</li>
+    <li>.delrespon</li>
+    <li>.deleterespon</li>
+    <li>.delsewa</li>
+    <li>.deletejadibot</li>
+    <li>.deljadibot</li>
+    <li>.delpremgub</li>
+    <li>.delpremiumgrub</li>
+    <li>.demoteme</li>
+    <li>.gctag</li>
+    <li>.infosistem</li>
+    <li>.infosystem</li>
+    <li>.ipserver</li>
+    <li>.jadibot</li>
+    <li>.join</li>
+    <li>.jpm</li>
+    <li>.jpmtag</li>
+    <li>.listblacklist</li>
+    <li>.listblock</li>
+    <li>.listprem</li>
+    <li>.listpremium</li>
+    <li>.listrespon</li>
+    <li>.listsewa2</li>
+    <li>.listsewa</li>
+    <li>.listjadibot</li>
+    <li>.listnosewa</li>
+    <li>.outallgrup</li>
+    <li>.outallgroup</li>
+    <li>.outallgrub</li>
+    <li>.outallgroub</li>
+    <li>.outallgc</li>
+    <li>.outgrup</li>
+    <li>.outgroup</li>
+    <li>.outgrub</li>
+    <li>.outgroub</li>
+    <li>.outgc</li>
+    <li>.outnosewa</li>
+    <li>.promoteme</li>
+    <li>.reset</li>
+    <li>.resetlevel</li>
+    <li>.resetlimit</li>
+    <li>.resetmoney</li>
+    <li>.restart</li>
+    <li>.self</li>
+    <li>.public</li>
+    <li>setbio.</li>
+    <li>.setname</li>
+    <li>.setppbot</li>
+    <li>.sewabot</li>
+    <li>.sewabotid</li>
+    <li>.stopjadibot</li>
+    <li>.tambahsewa</li>
+    <li>.toadmin</li>
+    <li>.totalsewa</li>
+    <li>.ounblacklist</li>
+    <li>.unblock</li>
+    <li>.update</li>
+    <li>.updatebaileys</li>
+    <li>.updatebailey</li>
+    <li>.updateforce</li>
+    <li>.viewcode</li>
+  </ul>
+  
+  <h2>🌐 Fitur Panel</h2>
+  <ul>
+    <li>.1gb</li>
+    <li>.2gb</li>
+    <li>.3gb</li>
+    <li>.4gb</li>
+    <li>.5gb</li>
+    <li>.6gb</li>
+    <li>.7gb</li>
+    <li>.8gb</li>
+    <li>.unlimited</li>
+    <li>.createadminpanel</li>
+    <li>.cadmin</li>
+    <li>.createserver</li>
+    <li>.createuser</li>
+    <li>.delserver</li>
+    <li>.deleteserver</li>
+    <li>.deluser</li>
+    <li>.finduser</li>
+    <li>.listserver</li>
+    <li>.listsrv</li>
+    <li>.listuser</li>
+    <li>.listusr</li>
+    <li>.resetserver</li>
+    <li>.resetuser</li>
+    <li>.saveuser</li>
+    <li>.statuspanel</li>
+  </ul>
+  
+  <h2>☎ Fitur Pushkontak</h2>
+  <ul>
+    <li>.listgc</li>
+    <li>.listgrub</li>
+    <li>.listgroub</li>
+    <li>.listgrup</li>
+    <li>.listgroup</li>
+    <li>.pushkontak</li>
+    <li>.savekontak</li>
+    <li>.totalgc</li>
+    <li>.totalgrub</li>
+    <li>.totalgroub</li>
+    <li>.totalgrup</li>
+    <li>.totalgroup</li>
+    <li>.totalgc2</li>
+    <li>.totalgrub2</li>
+    <li>.totalgroub2</li>
+    <li>.totalgrup2</li>
+    <li>.totalgroup2</li>
+  </ul>
+  
+  <h2>🪩 Fitur Random</h2>
+  <ul>
+    <li>.aesthetic</li>
+    <li>.cecan</li>
+    <li>.cogan</li>
+    <li>.cosplay</li>
+    <li>.darkjoke</li>
+    <li>.hacker</li>
+    <li>.kucing</li>
+    <li>.memeindo</li>
+    <li>.motivasi</li>
+    <li>.pubg</li>
+    <li>.thailand</li>
+    <li>.vietnam</li>
+    <li>.walhp</li>
+    <li>.animequotes</li>
+    <li>.bucinquote</li>
+    <li>.dilanquote</li>
+    <li>.faktaunik</li>
+    <li>.jawaquote</li>
+    <li>.jokes</li>
+    <li>.pantun</li>
+    <li>.quote</li>
+    <li>.quotes</li>
+    <li>.randomquote</li>
+  </ul>
+  
+  <h2>🛍 Fitur Store</h2>
+  <ul>
+    <li>.addlist</li>
+    <li>.dellist</li>
+    <li>.deletelist</li>
+    <li>.done</li>
+    <li>.d</li>
+    <li>.selesai</li>
+    <li>.list</li>
+    <li>.proses</li>
+    <li>.renamelist</li>
+    <li>.resetlist</li>
+    <li>.setdone</li>
+    <li>.setlist</li>
+    <li>.setproses</li>
+    <li>.updatelist</li>
+  </ul>
+  
+  <h2>✨ Fitur Textpro</h2>
+  <ul>
+    <li>.marvel</li>
+    <li>.pornhub</li>
+    <li>.3dbox</li>
+    <li>.blackpink</li>
+    <li>.boom</li>
+    <li>.gaming</li>
+    <li>.magma</li>
+    <li>.matrix</li>
+    <li>.metal</li>
+    <li>.neon</li>
+    <li>.shadow</li>
+    <li>.signature</li>
+    <li>.sliced</li>
+    <li>.snow</li>
+    <li>.valentine</li>
+    <li>.winter</li>
+    <li>.wolf</li>
+  </ul>
+  
+  <h2>⚙️ Fitur Tools</h2>
+  <ul>
+    <li>.cekdns</li>
+    <li>.cekhost</li>
+    <li>.cekidgc</li>
+    <li>.cekuser</li>
+    <li>.ipcheck</li>
+    <li>.checkip</li>
+    <li>.cekip</li>
+    <li>.ipchecker</li>
+    <li>.emojimix</li>
+    <li>.get</li>
+    <li>.git</li>
+    <li>.google</li>
+    <li>.hd</li>
+    <li>.remini</li>
+    <li>.image</li>
+    <li>.img</li>
+    <li>.googleimage</li>
+    <li>.inspect</li>
+    <li>.lorem</li>
+    <li>.now</li>
+    <li>.numberbot</li>
+    <li>.ping</li>
+    <li>.ping2</li>
+    <li>.createqr</li>
+    <li>.detectqr</li>
+    <li>.rmbg</li>
+    <li>.removebg</li>
+    <li>.nobg</li>
+    <li>.rvo</li>
+    <li>.ssweb</li>
+    <li>.tomp3</li>
+    <li>.tourl</li>
+    <li>.tourl2</li>
+    <li>.tovn</li>
+    <li>.toimg</li>
+    <li>.tom4a</li>
+    <li>.ts</li>
+    <li>.translate</li>
+    <li>.voicechanger</li>
+    <li>.whois</li>
+    </ul>
+  
+<a href="menufitur.html" class="back-button">← Kembali</a>
+</div>
+  
+<footer>
+  &copy; 2025 Aiss Hosting. Semua fitur bot ditampilkan di sini untuk referensi pengguna.
+</footer>
+<script>
+function filterFeatures() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const allSections = document.querySelectorAll('.container h2, .container ul, .container li');
+
+  allSections.forEach(el => {
+    if (el.tagName === "LI") {
+      el.style.display = el.textContent.toLowerCase().includes(input) ? "list-item" : "none";
+    }
+  });
+
+  // Sembunyikan judul dan <ul> jika semua item <li> di dalamnya disembunyikan
+  const sections = document.querySelectorAll('.container h2');
+  sections.forEach(section => {
+    const ul = section.nextElementSibling;
+    const lis = ul.querySelectorAll('li');
+    const visibleLis = [...lis].filter(li => li.style.display !== "none");
+    section.style.display = ul.style.display = visibleLis.length ? "block" : "none";
+  });
+}
+</script>
+</body>
+</html>
