@@ -6,57 +6,61 @@
   <title>Login / Daftar - Aiss Hosting</title>
   <style>
     body {
-      background-color: #000;
-      color: #00ff88;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-
     .form-container {
       background-color: #111;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #00ff88;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ff00;
       width: 90%;
       max-width: 400px;
-    }
-
-    h2 {
       text-align: center;
     }
-
+    h2 {
+      color: #00ff00;
+      margin-bottom: 20px;
+    }
     input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       background-color: #222;
-      color: white;
+      color: #fff;
     }
-
     .btn {
-      width: 100%;
-      padding: 10px;
-      background-color: #00ff88;
-      color: black;
-      font-weight: bold;
+      background: #00ff88;
       border: none;
-      border-radius: 6px;
+      padding: 12px 20px;
+      margin-top: 10px;
+      color: #000;
+      font-weight: bold;
+      border-radius: 10px;
       cursor: pointer;
+      box-shadow: 0 0 15px #ff00ff;
+      transition: 0.3s;
     }
-
-    .toggle {
-      text-align: center;
+    .btn:hover {
+      background: #00ffaa;
+    }
+    .toggle-link {
       margin-top: 15px;
+      display: block;
+      color: #aaa;
     }
-
-    .toggle a {
-      color: #00ccff;
+    .toggle-link a {
+      color: #00ffcc;
+      text-decoration: underline;
       cursor: pointer;
     }
   </style>
@@ -68,80 +72,84 @@
     <input type="password" id="password" placeholder="Password" />
     <input type="text" id="phone" placeholder="Nomor HP" style="display: none;" />
     <button class="btn" onclick="handleSubmit()" id="submitBtn">Login</button>
-    <div class="toggle">
-      <span id="toggleText">Belum punya akun? <a onclick="toggleForm()">Daftar</a></span>
+    <div class="toggle-link" id="toggleForm">
+      Belum punya akun? <a onclick="toggleForm()">Daftar di sini</a>
     </div>
   </div>
 
-  <!-- Firebase SDKs -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  <!-- Firebase App (CDN) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
+  <script>
+    // Konfigurasi Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyANHUpvv3qKDmtVf71EcM_rhkeJ06SPl5E",
       authDomain: "aris-b2679.firebaseapp.com",
       projectId: "aris-b2679",
       storageBucket: "aris-b2679.appspot.com",
       messagingSenderId: "1045219830979",
-      appId: "1:1045219830979:web:1083ff61d57a752e7f8676"
+      appId: "1:1045219830979:web:1083ff61d57a752e7f8676",
+      measurementId: "G-Z9C5327C9C"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
     let isLogin = true;
 
     function toggleForm() {
       isLogin = !isLogin;
-      document.getElementById('formTitle').innerText = isLogin ? 'Login' : 'Daftar';
-      document.getElementById('submitBtn').innerText = isLogin ? 'Login' : 'Daftar';
-      document.getElementById('toggleText').innerHTML = isLogin 
-        ? 'Belum punya akun? <a onclick="toggleForm()">Daftar</a>' 
-        : 'Sudah punya akun? <a onclick="toggleForm()">Login</a>';
+      document.getElementById('formTitle').textContent = isLogin ? 'Login' : 'Daftar';
+      document.getElementById('submitBtn').textContent = isLogin ? 'Login' : 'Daftar';
+      document.getElementById('toggleForm').innerHTML = isLogin
+        ? 'Belum punya akun? <a onclick="toggleForm()">Daftar di sini</a>'
+        : 'Sudah punya akun? <a onclick="toggleForm()">Login di sini</a>';
       document.getElementById('phone').style.display = isLogin ? 'none' : 'block';
     }
 
-    window.handleSubmit = async function () {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const phone = document.getElementById("phone").value.trim();
+    function handleSubmit() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const phone = document.getElementById('phone').value.trim();
 
       if (!email || !password || (!isLogin && !phone)) {
-        alert("Isi semua field!");
+        alert("Harap isi semua field!");
         return;
       }
 
-      try {
-        if (isLogin) {
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
-          const uid = userCredential.user.uid;
-          const docRef = doc(db, "users", uid);
-          const docSnap = await getDoc(docRef);
-          const data = docSnap.data();
-
-          localStorage.setItem("aissUser", email);
-          localStorage.setItem("aissRole", data.role || "user");
-          window.location.href = "menugame.html";
-        } else {
-          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-          const uid = userCredential.user.uid;
-
-          await setDoc(doc(db, "users", uid), {
-            email,
-            phone,
-            role: "user"  // default role
+      if (isLogin) {
+        // LOGIN
+        auth.signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            localStorage.setItem("currentUser", email);
+            window.location.href = "menugame.html";
+          })
+          .catch((error) => {
+            alert("Gagal login: " + error.message);
           });
-
-          localStorage.setItem("aissUser", email);
-          localStorage.setItem("aissRole", "user");
-          alert("Pendaftaran berhasil!");
-          window.location.href = "menugame.html";
-        }
-      } catch (error) {
-        alert("Error: " + error.message);
+      } else {
+        // DAFTAR
+        auth.createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            return db.collection("users").doc(user.uid).set({
+              email,
+              phone,
+              role: "user",
+              createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+          })
+          .then(() => {
+            localStorage.setItem("currentUser", email);
+            alert("Berhasil daftar!");
+            window.location.href = "menugame.html";
+          })
+          .catch((error) => {
+            alert("Gagal daftar: " + error.message);
+          });
       }
     }
   </script>
