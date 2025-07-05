@@ -2,20 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pilihan Bot - Aiss Hosting</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Game - Aiss Hosting</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #000;
       font-family: 'Arial', sans-serif;
       color: #00ff88;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -31,28 +29,35 @@
     h2 {
       text-align: center;
       color: #00ff88;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #bbb;
     }
 
     .info-options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin-top: 20px;
     }
 
     .info-option {
       background-color: #1a1a1a;
-      border: 1px solid #00ff88;
+      border: 2px solid #00ff88;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      animation: neon-border 2s infinite alternate;
+      text-decoration: none;
+      color: #00ff88;
     }
 
     .info-option:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 10px #00ff88;
+      box-shadow: 0 0 15px #00ff88;
     }
 
     .info-option h3 {
@@ -62,37 +67,44 @@
 
     .info-option p {
       color: #bbb;
+      margin: 0;
     }
 
-    .info-option a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #00ff88;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
-      text-decoration: none;
+    .glow-animated {
+      animation: glow-cycle 4s infinite;
     }
 
-    .info-option a:hover {
-      background-color: #00cc6e;
+    @keyframes glow-cycle {
+      0%   { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
+      25%  { box-shadow: 0 0 10px #ff0055; border-color: #ff0055; }
+      50%  { box-shadow: 0 0 10px #00ccff; border-color: #00ccff; }
+      75%  { box-shadow: 0 0 10px #cc00ff; border-color: #cc00ff; }
+      100% { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
     }
 
     .btn-wa {
-      display: inline-block;
-      margin-top: 20px;
       padding: 10px 20px;
-      background-color: #333;
-      color: #00ff88;
-      border: 1px solid #00ff88;
-      border-radius: 8px;
+      background-color: #25D366;
+      color: #fff;
       text-decoration: none;
+      border-radius: 8px;
       font-weight: bold;
     }
 
     .btn-wa:hover {
-      background-color: #222;
+      background-color: #1ebe5d;
+    }
+
+    .admin-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: yellow;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 0 10px yellow, 0 0 20px #fffb00;
     }
 
     footer {
@@ -100,44 +112,59 @@
       padding: 20px;
       color: #666;
     }
-
-    @keyframes neon-border {
-      0%   { box-shadow: 0 0 12px #00ff88; border-color: #00ff88; }
-      50%  { box-shadow: 0 0 12px #00ccff; border-color: #00ccff; }
-      100% { box-shadow: 0 0 12px #00ff88; border-color: #00ff88; }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="info-card">
-      <h2>Pilih File untuk Diunduh</h2>
+      <h2>Menu Game</h2>
+      <p class="intro">Silakan pilih game yang ingin dimainkan:</p>
 
       <div class="info-options">
-        <div class="info-option">
-          <h3>Harga Bot Aiss Assisten</h3>
+        <a href="gameangka.html" class="info-option glow-animated">
+          <h3>Game Susun Angka</h3>
           <p>By Aiss Hosting</p>
-          <a href="hargaassisten.html">Lihat Detail</a>
-        </div>
-
-        <div class="info-option">
-          <h3>Harga Aiss Nexus</h3>
+        </a>
+        <a href="gamegambar.html" class="info-option glow-animated">
+          <h3>Game Cocokkan Gambar</h3>
           <p>By Aiss Hosting</p>
-          <a href="harganexus.html">Lihat Detail</a>
-        </div>
-
-        <div class="info-option">
-          <h3>Harga Aiss Skaleton</h3>
+        </a>
+        <a href="gamedam.html" class="info-option glow-animated">
+          <h3>Game Dam Vs AI</h3>
           <p>By Aiss Hosting</p>
-          <a href="hargaskaleton.html">Lihat Detail</a>
-        </div>
+        </a>
+        <a href="gamemine.html" class="info-option glow-animated">
+          <h3>Tebak Bom</h3>
+          <p>By Aiss Hosting</p>
+        </a>
+        <a href="gamesnake.html" class="info-option glow-animated">
+          <h3>Snake</h3>
+          <p>By Aiss Hosting</p>
+        </a>
       </div>
 
       <div style="text-align: center; margin-top: 30px;">
-        <a href="menumain.html" class="btn-wa">← Kembali</a>
+        <a href="login.html" class="btn-wa">← Kembali</a>
       </div>
+
+      <div style="text-align: center; margin-top: 20px;" id="adminButtonContainer"></div>
     </div>
   </div>
-    <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
-      </body>
-        </html>
+
+  <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
+
+  <script>
+    const user = localStorage.getItem('aissUser') || localStorage.getItem('currentUser');
+    if (!user) {
+      alert('Silakan login dulu!');
+      window.location.href = 'login.html';
+    }
+
+    if (user === 'aris') {
+      document.getElementById("adminButtonContainer").innerHTML = `
+        <a href="admin.html" class="admin-btn">🔐 Admin Panel</a>
+      `;
+    }
+  </script>
+</body>
+</html>

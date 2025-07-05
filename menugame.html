@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu Game - Aiss Game</title>
   <style>
     body {
@@ -35,6 +35,7 @@
 
     h2 {
       margin-bottom: 30px;
+      color: #00ff88;
     }
 
     .info-options {
@@ -44,13 +45,28 @@
     }
 
     .info-option {
-      background-color: #1f1f1f;
-      border-radius: 8px;
+      background-color: #1a1a1a;
+      border: 2px solid #00ff88;
+      border-radius: 10px;
       padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: glow-cycle 4s infinite;
+    }
+
+    .info-option:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px #00ff88;
     }
 
     .info-option h3 {
       margin: 0 0 10px;
+      color: #00ff88;
+    }
+
+    .info-option p {
+      color: #bbb;
+      margin: 0;
     }
 
     .info-option a {
@@ -71,12 +87,33 @@
       text-decoration: none;
     }
 
+    .admin-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #111;
+      color: #00ff88;
+      font-weight: bold;
+      border: 2px solid #00ff88;
+      border-radius: 8px;
+      text-decoration: none;
+      animation: glow-cycle 4s infinite;
+    }
+
     footer {
       text-align: center;
       padding: 15px;
       background-color: #121212;
       font-size: 14px;
       color: #888;
+    }
+
+    @keyframes glow-cycle {
+      0%   { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
+      25%  { box-shadow: 0 0 10px #ff0055; border-color: #ff0055; }
+      50%  { box-shadow: 0 0 10px #00ccff; border-color: #00ccff; }
+      75%  { box-shadow: 0 0 10px #cc00ff; border-color: #cc00ff; }
+      100% { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
     }
   </style>
 </head>
@@ -97,34 +134,56 @@
           <p>By Aiss Hosting</p>
           <a href="gamegambar.html">Mulai Game</a>
         </div>
-        
+
         <div class="info-option">
           <h3>Game Dam Vs AI</h3>
           <p>By Aiss Hosting</p>
           <a href="gamedam.html">Mulai Game</a>
         </div>
-        
+
         <div class="info-option">
           <h3>Tebak Bom</h3>
           <p>By Aiss Hosting</p>
           <a href="gamemine.html">Mulai Game</a>
         </div>
+
+        <div class="info-option">
+          <h3>Snake</h3>
+          <p>By Aiss Hosting</p>
+          <a href="gamesnake.html">Mulai Game</a>
+        </div>
       </div>
 
-      <div style="text-align: center; margin-top: 30px;">
+      <div style="margin-top: 30px;">
         <a href="login.html" class="btn-wa">← Kembali</a>
       </div>
+
+      <!-- Tombol admin akan disisipkan di sini -->
+      <div id="adminButtonContainer"></div>
     </div>
   </div>
 
   <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
 
   <script>
-    const user = localStorage.getItem('aissUser') || localStorage.getItem('currentUser');
-    if (!user) {
-      alert('Silakan login dulu!');
-      window.location.href = 'login.html';
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = localStorage.getItem('currentUser') || localStorage.getItem('aissUser');
+
+      // Cek login
+      if (!user) {
+        alert('Silakan login dulu!');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Cek apakah admin (ganti 'aris' kalau perlu)
+      if (user === 'aris') {
+        const container = document.getElementById("adminButtonContainer");
+        container.innerHTML = `
+          <a href="admin.html" class="admin-btn">🔐 Admin Website</a>
+        `;
+      }
+    });
   </script>
 </body>
 </html>
