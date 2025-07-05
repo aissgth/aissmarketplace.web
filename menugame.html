@@ -116,6 +116,40 @@
       100% { box-shadow: 0 0 10px #00ff88; border-color: #00ff88; }
     }
   </style>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyANHUpvv3qKDmtVf71EcM_rhkeJ06SPl5E",
+      authDomain: "aris-b2679.firebaseapp.com",
+      projectId: "aris-b2679",
+      storageBucket: "aris-b2679.appspot.com",
+      messagingSenderId: "1045219830979",
+      appId: "1:1045219830979:web:1083ff61d57a752e7f8676",
+      measurementId: "G-Z9C5327C9C"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const username = user.email.split('@')[0]; // misalnya "aris@gmail.com" → "aris"
+
+        if (username === "aris") {
+          document.getElementById("adminButtonContainer").innerHTML = `
+            <a href="admin.html" class="admin-btn">🔐 Admin Website</a>
+          `;
+        }
+
+      } else {
+        alert("Silakan login terlebih dahulu.");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
 </head>
 <body>
   <div class="container">
@@ -128,25 +162,21 @@
           <p>By Aiss Hosting</p>
           <a href="gameangka.html">Mulai Game</a>
         </div>
-
         <div class="info-option">
           <h3>Game Cocokkan Gambar</h3>
           <p>By Aiss Hosting</p>
           <a href="gamegambar.html">Mulai Game</a>
         </div>
-
         <div class="info-option">
           <h3>Game Dam Vs AI</h3>
           <p>By Aiss Hosting</p>
           <a href="gamedam.html">Mulai Game</a>
         </div>
-
         <div class="info-option">
           <h3>Tebak Bom</h3>
           <p>By Aiss Hosting</p>
           <a href="gamemine.html">Mulai Game</a>
         </div>
-
         <div class="info-option">
           <h3>Snake</h3>
           <p>By Aiss Hosting</p>
@@ -158,32 +188,10 @@
         <a href="login.html" class="btn-wa">← Kembali</a>
       </div>
 
-      <!-- Tombol admin akan disisipkan di sini -->
       <div id="adminButtonContainer"></div>
     </div>
   </div>
 
   <footer>&copy; 2025 Aiss Hosting - Semua Hak Dilindungi</footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const user = localStorage.getItem('currentUser') || localStorage.getItem('aissUser');
-
-      // Cek login
-      if (!user) {
-        alert('Silakan login dulu!');
-        window.location.href = 'login.html';
-        return;
-      }
-
-      // Cek apakah admin (ganti 'aris' kalau perlu)
-      if (user === 'aris') {
-        const container = document.getElementById("adminButtonContainer");
-        container.innerHTML = `
-          <a href="admin.html" class="admin-btn">🔐 Admin Website</a>
-        `;
-      }
-    });
-  </script>
 </body>
 </html>
